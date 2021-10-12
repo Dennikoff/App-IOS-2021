@@ -3,11 +3,6 @@
 
 <img src="https://github.com/kristyashh/TestRep/blob/main/img/present/mockup%201-3.jpg">
 
-## Функционал
-
-
-
-
 <!-- GETTING STARTED -->
 ## Функционал
 
@@ -17,7 +12,7 @@
 *  отслеживать количество сигарет, которых не было выкурено
 *  вести дневник самочувствия
 
-
+<img src="https://github.com/denis0108/App-IOS-2021/blob/main/img/loading-2.jpg">
 
 
 <!-- CONTRIBUTING -->
