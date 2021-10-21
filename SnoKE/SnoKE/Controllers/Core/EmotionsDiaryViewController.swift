@@ -13,6 +13,7 @@ class EmotionsDiaryViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .red
+        // sign up dev
         
     }
     
