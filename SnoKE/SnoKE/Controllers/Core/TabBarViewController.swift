@@ -25,17 +25,11 @@ class TabBarViewController: UITabBarController {
         achievementsVC.navigationItem.largeTitleDisplayMode = .never
         profileVC.navigationItem.largeTitleDisplayMode = .never
 
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .secondarySystemBackground
-        
+
         let homeNav = UINavigationController(rootViewController: homeVC)
-        homeNav.navigationBar.compactAppearance = appearance
-        
         let achievementsNav = UINavigationController(rootViewController: achievementsVC)
-        achievementsNav.navigationBar.compactAppearance = appearance
-        
         let profileNav = UINavigationController(rootViewController: profileVC)
-        profileNav.navigationBar.compactAppearance = appearance
+
         
         homeNav.navigationBar.tintColor = .label
         achievementsNav.navigationBar.tintColor = .label

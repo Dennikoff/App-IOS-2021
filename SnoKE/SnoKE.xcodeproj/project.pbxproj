@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,10 @@
 		666352C627219DDB0084BBA3 /* Useful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666352C527219DDB0084BBA3 /* Useful.swift */; };
 		666352C827219DE30084BBA3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666352C727219DE30084BBA3 /* Extensions.swift */; };
 		666352CA27219FE00084BBA3 /* TimeWithoutSmokingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666352C927219FE00084BBA3 /* TimeWithoutSmokingView.swift */; };
+		666352CE2721AED40084BBA3 /* SecondaryTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666352CD2721AED40084BBA3 /* SecondaryTrackerView.swift */; };
+		666352D42721E7DF0084BBA3 /* SecondaryTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666352D32721E7DF0084BBA3 /* SecondaryTrackerViewModel.swift */; };
+		666352D72721EE4A0084BBA3 /* EasyPeasy in Frameworks */ = {isa = PBXBuildFile; productRef = 666352D62721EE4A0084BBA3 /* EasyPeasy */; };
+		666352D92721F6DD0084BBA3 /* TimeElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666352D82721F6DD0084BBA3 /* TimeElementView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,9 @@
 		666352C527219DDB0084BBA3 /* Useful.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Useful.swift; sourceTree = "<group>"; };
 		666352C727219DE30084BBA3 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		666352C927219FE00084BBA3 /* TimeWithoutSmokingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeWithoutSmokingView.swift; sourceTree = "<group>"; };
+		666352CD2721AED40084BBA3 /* SecondaryTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryTrackerView.swift; sourceTree = "<group>"; };
+		666352D32721E7DF0084BBA3 /* SecondaryTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryTrackerViewModel.swift; sourceTree = "<group>"; };
+		666352D82721F6DD0084BBA3 /* TimeElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeElementView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				666352D72721EE4A0084BBA3 /* EasyPeasy in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				666352C927219FE00084BBA3 /* TimeWithoutSmokingView.swift */,
+				666352CD2721AED40084BBA3 /* SecondaryTrackerView.swift */,
+				666352D82721F6DD0084BBA3 /* TimeElementView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -148,6 +158,7 @@
 		666352BF27219DA80084BBA3 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				666352D32721E7DF0084BBA3 /* SecondaryTrackerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -177,6 +188,9 @@
 			dependencies = (
 			);
 			name = SnoKE;
+			packageProductDependencies = (
+				666352D62721EE4A0084BBA3 /* EasyPeasy */,
+			);
 			productName = SnoKE;
 			productReference = 6663528C27219C720084BBA3 /* SnoKE.app */;
 			productType = "com.apple.product-type.application";
@@ -204,6 +218,9 @@
 				Base,
 			);
 			mainGroup = 6663528327219C720084BBA3;
+			packageReferences = (
+				666352D52721EE4A0084BBA3 /* XCRemoteSwiftPackageReference "EasyPeasy" */,
+			);
 			productRefGroup = 6663528D27219C720084BBA3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -240,8 +257,11 @@
 				666352BD27219D8C0084BBA3 /* SignInViewController.swift in Sources */,
 				666352BB27219D8C0084BBA3 /* ProfileViewController.swift in Sources */,
 				666352C827219DE30084BBA3 /* Extensions.swift in Sources */,
+				666352D42721E7DF0084BBA3 /* SecondaryTrackerViewModel.swift in Sources */,
 				666352C427219DB60084BBA3 /* AuthManager.swift in Sources */,
 				666352BA27219D8C0084BBA3 /* TabBarViewController.swift in Sources */,
+				666352CE2721AED40084BBA3 /* SecondaryTrackerView.swift in Sources */,
+				666352D92721F6DD0084BBA3 /* TimeElementView.swift in Sources */,
 				6663529227219C720084BBA3 /* SceneDelegate.swift in Sources */,
 				666352C627219DDB0084BBA3 /* Useful.swift in Sources */,
 			);
@@ -437,6 +457,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		666352D52721EE4A0084BBA3 /* XCRemoteSwiftPackageReference "EasyPeasy" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nakiostudio/EasyPeasy";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		666352D62721EE4A0084BBA3 /* EasyPeasy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 666352D52721EE4A0084BBA3 /* XCRemoteSwiftPackageReference "EasyPeasy" */;
+			productName = EasyPeasy;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6663528427219C720084BBA3 /* Project object */;
 }
