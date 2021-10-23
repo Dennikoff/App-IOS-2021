@@ -10,7 +10,6 @@
 		5964303127244539006786C9 /* SignUpModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5964303027244539006786C9 /* SignUpModels.swift */; };
 		5964303327245D89006786C9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5964303227245D89006786C9 /* SignUpViewController.swift */; };
 		59643037272463E4006786C9 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59643036272463E4006786C9 /* SignUpView.swift */; };
-		5964303927246883006786C9 /* xxxxxx.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5964303827246883006786C9 /* xxxxxx.xib */; };
 		5964303C27246FCA006786C9 /* ViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5964303B27246FCA006786C9 /* ViewControllerPreview.swift */; };
 		5964303E27246FFE006786C9 /* ViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5964303D27246FFE006786C9 /* ViewPreview.swift */; };
 		6663529027219C720084BBA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6663528F27219C720084BBA3 /* AppDelegate.swift */; };
@@ -34,7 +33,6 @@
 		5964303027244539006786C9 /* SignUpModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModels.swift; sourceTree = "<group>"; };
 		5964303227245D89006786C9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		59643036272463E4006786C9 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
-		5964303827246883006786C9 /* xxxxxx.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = xxxxxx.xib; sourceTree = "<group>"; };
 		5964303B27246FCA006786C9 /* ViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPreview.swift; sourceTree = "<group>"; };
 		5964303D27246FFE006786C9 /* ViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPreview.swift; sourceTree = "<group>"; };
 		6663528C27219C720084BBA3 /* SnoKE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnoKE.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,7 +71,6 @@
 				5964303027244539006786C9 /* SignUpModels.swift */,
 				5964303227245D89006786C9 /* SignUpViewController.swift */,
 				59643036272463E4006786C9 /* SignUpView.swift */,
-				5964303827246883006786C9 /* xxxxxx.xib */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -234,7 +231,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6663529C27219C730084BBA3 /* LaunchScreen.storyboard in Resources */,
-				5964303927246883006786C9 /* xxxxxx.xib in Resources */,
 				6663529927219C730084BBA3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
