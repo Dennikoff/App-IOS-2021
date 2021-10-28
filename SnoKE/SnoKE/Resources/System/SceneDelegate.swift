@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var appCoordinator: AppCoordinator?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -17,9 +18,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
         let window = UIWindow(windowScene: windowScene)
-        let tabBarVC = TabBarViewController()
-        window.rootViewController = tabBarVC
+        
+        let homeCoordinator = HomeCoordinator(navigationController: UINavigationController(), imageName: "house.fill", title: "Главная", tabBarItemTag: 1)
+        let diaryCoordinator = DiaryCoordinator(navigationController: UINavigationController(), imageName: "book.closed.fill", title: "Дневник", tabBarItemTag: 2)
+        let profileCoordinator = ProfileCoordinator(navigationController: UINavigationController(), imageName: "figure.wave", title: "Профиль", tabBarItemTag: 3)
+        
+        appCoordinator = AppCoordinator(tabBarController: UITabBarController(),
+                                        childCoordinators: [homeCoordinator,
+                                                            diaryCoordinator,
+                                                            profileCoordinator])
+        appCoordinator?.start()
+        
+        window.rootViewController = appCoordinator?.tabBarController
         window.makeKeyAndVisible()
         self.window = window
     }

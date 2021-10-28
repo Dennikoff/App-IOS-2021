@@ -48,7 +48,7 @@ class SecondaryTrackerView: UIView {
         setLayout()
     }
     
-    func configure(with viewModel: SecondaryTrackerViewModel) {
+    func configure(with viewModel: SecondaryTrackerModel) {
         switch viewModel.type {
         case .savedMoney:
             self.textLabel.text = "+ " + String(viewModel.number) + " RUB"

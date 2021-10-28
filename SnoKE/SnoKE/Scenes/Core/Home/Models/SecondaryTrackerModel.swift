@@ -12,7 +12,7 @@ enum SecondaryTrackerViewType {
     case brokenCigarettes
 }
 
-struct SecondaryTrackerViewModel {
+struct SecondaryTrackerModel {
     let type: SecondaryTrackerViewType
     let number: Int
     let icon: String
