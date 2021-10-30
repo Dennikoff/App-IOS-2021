@@ -10,6 +10,15 @@ import Foundation
 enum SecondaryTrackerViewType {
     case savedMoney
     case brokenCigarettes
+    
+    var icon: String {
+        switch self {
+        case .savedMoney:
+            return "paymentIcon"
+        case .brokenCigarettes:
+            return "brokenCigarette"
+        }
+    }
 }
 
 struct SecondaryTrackerModel {

@@ -5,27 +5,66 @@
 //  Created by Ilya Buldin on 21.10.2021.
 //
 
-import UIKit
+import SwiftUI
+import EasyPeasy
 
 class HomeViewController: UIViewController {
-    
-    // мне впадлу нормально делать этот вью контроллер поэтому пока что
-    // фреймами через жопу
-    
-    private var homePresenter: HomePresenterProtocol?
 
-    let cool = SecondaryTrackerView(frame: CGRect(x: 50, y: 390, width: 166, height: 48))
-    let cool2 = SecondaryTrackerView(frame: CGRect(x: 230, y: 390, width: 166, height: 48))
+    private var homePresenter: HomePresenterProtocol?
     
-    let doom = TimeWithoutSmokingView(frame: CGRect(x: 50, y: 200, width: 343, height: 175))
-    let achTitle = UILabel()
+    private lazy var timeWithoutSmokingView: TimeWithoutSmokingView = {
+        let view = TimeWithoutSmokingView()
+        return view
+    }()
     
-    let viewModel = SecondaryTrackerModel(type: .savedMoney, number: 322, icon: "paymentIcon")
-    let viewModel2 = SecondaryTrackerModel(type: .brokenCigarettes, number: 322, icon: "brokenCigarette")
+    private lazy var savedMoneyView: SecondaryTrackerView = {
+        let view = SecondaryTrackerView()
+        return view
+    }()
     
-    let coolButton = UIButton()
+    private lazy var brokenCigarettesView: SecondaryTrackerView = {
+        let view = SecondaryTrackerView()
+        return view
+    }()
     
-    init(presenter: HomePresenterProtocol) {
+    private lazy var headerLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 19, weight: .semibold)
+        label.text = "Мои достижения"
+        return label
+    }()
+    
+    private lazy var lastAchievementView: LastAchievementView = {
+       let view = LastAchievementView()
+       return view
+    }()
+    
+    private lazy var moreAchievementsButton: UIButton = {
+        let button = UIButton()
+        let imageConfig = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 19, weight: .bold))
+        button.setImage(UIImage(systemName: "chevron.right", withConfiguration: imageConfig), for: .normal)
+        button.layer.cornerRadius = 12
+        button.backgroundColor = #colorLiteral(red: 1, green: 0.7490196078, blue: 0.4, alpha: 1)
+        button.imageView?.tintColor = .white
+        return button
+    }()
+    
+    private lazy var userWantsToSmokeButton: UserWantsToSmokeButton = {
+        let button = UserWantsToSmokeButton()
+        return button
+    }()
+    
+    private lazy var userSmokedButton: UserSmokedButton = {
+        let button = UserSmokedButton()
+        return button
+    }()
+    
+    let model = SecondaryTrackerModel(type: .savedMoney, number: 322, icon: "paymentIcon")
+    let model2 = SecondaryTrackerModel(type: .brokenCigarettes, number: 322, icon: "brokenCigarette")
+    
+    
+    
+    init(presenter: HomePresenterProtocol?) {
         self.homePresenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -36,25 +75,104 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(cool)
-        view.addSubview(doom)
-        view.addSubview(cool2)
-        view.addSubview(achTitle)
-        view.addSubview(coolButton)
-        achTitle.text = "Мои достижения"
-        achTitle.textColor = .black
-        achTitle.frame = CGRect(x: 50, y: 450, width: 200, height: 20)
-        coolButton.frame = CGRect(x: 150, y: 550, width: 200, height: 50)
-        coolButton.setTitle("hit me", for: .normal)
-        coolButton.backgroundColor = .orange
-        coolButton.addTarget(self, action: #selector(coolButtonTapped), for: .touchUpInside)
-        cool.configure(with: viewModel)
-        cool2.configure(with: viewModel2)
-        doom.configure(digits: (days: (0, 8), hours: (1, 7), minutes: (2, 3)))
+        setupViews()
+        savedMoneyView.configure(with: model)
+        brokenCigarettesView.configure(with: model2)
+        timeWithoutSmokingView.configure(digits: (days: (0, 8), hours: (1, 7), minutes: (2, 3)))
+        moreAchievementsButton.addTarget(self, action: #selector(coolButtonTapped), for: .touchUpInside)
+        userWantsToSmokeButton.addTarget(self,
+                                         action: #selector(userWantsToSmokeButtonTapped),
+                                         for: .touchUpInside)
+        userSmokedButton.addTarget(self, action: #selector(userSmokedButtonTapped), for: .touchUpInside)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        setupLayout()
+    }
+    
+    private func setupViews() {
         view.backgroundColor = .systemBackground
+        let views = [timeWithoutSmokingView,
+                     savedMoneyView,
+                     brokenCigarettesView,
+                     headerLabel,
+                     lastAchievementView,
+                     moreAchievementsButton,
+                     userWantsToSmokeButton,
+                     userSmokedButton]
+        views.forEach {
+            view.addSubview($0)
+        }
+    }
+    
+    private func setupLayout() {
+        timeWithoutSmokingView.easy.layout(
+            Height(175),
+            Right(16),
+            Left(16),
+            Top(0).to(navigationController?.navigationBar.safeAreaLayoutGuide ?? UILayoutGuide())
+        )
+        
+        savedMoneyView.easy.layout(
+            Height(50),
+            Left(16),
+            Width((view.width - 16 * 2 - 12) / 2),
+            Top(12).to(timeWithoutSmokingView)
+        )
+        
+        brokenCigarettesView.easy.layout(
+            Height(50),
+            Right(16),
+            Width((view.width - 16 * 2 - 12) / 2),
+            Top(12).to(timeWithoutSmokingView)
+        )
+        
+        headerLabel.easy.layout(
+            Top(12).to(savedMoneyView),
+            Left(16)
+        )
+        
+        lastAchievementView.easy.layout(
+            Width((view.width - 44) * 2/3),
+            Height(100),
+            Left(16),
+            Top(12).to(headerLabel)
+        )
+        
+        moreAchievementsButton.easy.layout(
+            Width((view.width - 44) * 1/3),
+            Height(100),
+            Right(16),
+            Top(12).to(headerLabel)
+        )
+        
+        userWantsToSmokeButton.easy.layout(
+            Width((view.width - 44) * 2/3),
+            Height(100),
+            Left(16),
+            Top(12).to(lastAchievementView)
+        )
+        
+        userSmokedButton.easy.layout(
+            Width((view.width - 44) * 1/3),
+            Height(100),
+            Right(16),
+            Top(12).to(moreAchievementsButton)
+        )
+            
     }
     
     @objc func coolButtonTapped() {
         homePresenter?.moreAchievementsButtonTapped()
     }
+    
+    @objc func userWantsToSmokeButtonTapped() {
+        homePresenter?.userWantsToSmokeButtonTapped()
+    }
+    
+    @objc func userSmokedButtonTapped() {
+        homePresenter?.userSmokedButtonTapped()
+    }
 }
+

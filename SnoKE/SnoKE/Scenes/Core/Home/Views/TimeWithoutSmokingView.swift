@@ -8,7 +8,7 @@
 import UIKit
 import EasyPeasy
 
-class TimeWithoutSmokingView: UIView {
+final class TimeWithoutSmokingView: UIView {
     private let firstTimeElement = TimeElementView()
     
     private let secondTimeElement = TimeElementView()

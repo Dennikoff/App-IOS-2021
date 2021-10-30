@@ -9,19 +9,19 @@ import UIKit
 import EasyPeasy
 
 
-class SecondaryTrackerView: UIView {
+final class SecondaryTrackerView: UIView {
     
     // MARK: -Properties
-    private var iconView: UIImageView = {
+    private lazy var iconView: UIImageView = {
         let image = UIImageView()
         image.tintColor = .black
         return image
     }()
     
-    private var textLabel: UILabel = {
+    private lazy var textLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = .systemFont(ofSize: 13, weight: .regular)
+        label.font = .systemFont(ofSize: 15, weight: .regular)
         
         return label
     }()
@@ -58,7 +58,7 @@ class SecondaryTrackerView: UIView {
         self.iconView.image = UIImage(named: viewModel.icon)
     }
     
-    func setLayout() {        
+    private func setLayout() {
         iconView.easy.layout(
             Size(CGSize(width: 28, height: 20)),
             CenterY(),
@@ -66,7 +66,7 @@ class SecondaryTrackerView: UIView {
         )
         textLabel.easy.layout(
             CenterY(),
-            Leading(14).to(iconView)
+            CenterX()
         )
     }
 

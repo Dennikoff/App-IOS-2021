@@ -8,7 +8,7 @@
 import UIKit
 import EasyPeasy
 
-class TimeElementView: UIView {
+final class TimeElementView: UIView {
     
     // MARK: -Properties
     private let firstTopBlock: UIView = {

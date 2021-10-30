@@ -10,6 +10,8 @@ import UIKit
 
 protocol HomePresenterProtocol {
     func moreAchievementsButtonTapped()
+    func userWantsToSmokeButtonTapped()
+    func userSmokedButtonTapped()
 }
 
 
@@ -24,9 +26,20 @@ final class HomePresenter {
 }
 
 extension HomePresenter: HomePresenterProtocol {
+    
     func moreAchievementsButtonTapped() {
         let achievementsVC = AchievementsViewController()
         achievementsVC.title = "Достижения"
         coordinator?.coordinate(to: achievementsVC)
+    }
+    
+    func userWantsToSmokeButtonTapped() {
+        let vc = ViewController()
+        coordinator?.modalPresentation(of: vc)
+    }
+    
+    func userSmokedButtonTapped() {
+        let vc = ViewController2()
+        coordinator?.modalPresentation(of: vc)
     }
 }
