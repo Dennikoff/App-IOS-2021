@@ -55,7 +55,7 @@ final class SecondaryTrackerView: UIView {
         case .brokenCigarettes:
             self.textLabel.text = "- " + String(viewModel.number) + " шт"
         }
-        self.iconView.image = UIImage(named: viewModel.icon)
+        self.iconView.image = UIImage(named: viewModel.type.icon)
     }
     
     private func setLayout() {

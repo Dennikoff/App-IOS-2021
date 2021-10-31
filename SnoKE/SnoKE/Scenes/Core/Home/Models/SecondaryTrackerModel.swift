@@ -24,5 +24,5 @@ enum SecondaryTrackerViewType {
 struct SecondaryTrackerModel {
     let type: SecondaryTrackerViewType
     let number: Int
-    let icon: String
+//    let icon: String
 }

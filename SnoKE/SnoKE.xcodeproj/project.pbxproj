@@ -31,6 +31,7 @@
 		6698CA24272DBB36006B9B17 /* UserSmokedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6698CA23272DBB36006B9B17 /* UserSmokedView.swift */; };
 		6698CA27272DBFB0006B9B17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6698CA26272DBFB0006B9B17 /* ViewController.swift */; };
 		6698CA2A272DC162006B9B17 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6698CA29272DC162006B9B17 /* ViewController2.swift */; };
+		6698CA2C272EEAA8006B9B17 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6698CA2B272EEAA8006B9B17 /* HomeView.swift */; };
 		66C0E5E1272B2DB10009E454 /* AppCorrdinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0E5E0272B2DB10009E454 /* AppCorrdinator.swift */; };
 		66C0E5E7272B3BA00009E454 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0E5E6272B3BA00009E454 /* HomeCoordinator.swift */; };
 		66C0E5E9272B3BBE0009E454 /* DiaryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0E5E8272B3BBE0009E454 /* DiaryCoordinator.swift */; };
@@ -68,6 +69,7 @@
 		6698CA23272DBB36006B9B17 /* UserSmokedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSmokedView.swift; sourceTree = "<group>"; };
 		6698CA26272DBFB0006B9B17 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6698CA29272DC162006B9B17 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		6698CA2B272EEAA8006B9B17 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		66C0E5E0272B2DB10009E454 /* AppCorrdinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCorrdinator.swift; sourceTree = "<group>"; };
 		66C0E5E6272B3BA00009E454 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		66C0E5E8272B3BBE0009E454 /* DiaryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCoordinator.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				6698CA1F272DA568006B9B17 /* LastAchievementView.swift */,
 				6698CA21272DB7F6006B9B17 /* UserWantsToSmokeButton.swift */,
 				6698CA23272DBB36006B9B17 /* UserSmokedView.swift */,
+				6698CA2B272EEAA8006B9B17 /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				666352BD27219D8C0084BBA3 /* SignInViewController.swift in Sources */,
 				666352BB27219D8C0084BBA3 /* ProfileViewController.swift in Sources */,
 				666352C827219DE30084BBA3 /* Extensions.swift in Sources */,
+				6698CA2C272EEAA8006B9B17 /* HomeView.swift in Sources */,
 				66C0E60F272B549E0009E454 /* HomePresenter.swift in Sources */,
 				66C0E5F9272B4E040009E454 /* CoreCoordinator.swift in Sources */,
 				666352D42721E7DF0084BBA3 /* SecondaryTrackerModel.swift in Sources */,
