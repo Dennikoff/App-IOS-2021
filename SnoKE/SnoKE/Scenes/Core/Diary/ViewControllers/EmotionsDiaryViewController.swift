@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  EmotionsDiaryViewController.swift
 //  SnoKE
 //
 //  Created by Ilya Buldin on 21.10.2021.
@@ -7,12 +7,13 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class EmotionsDiaryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .cyan
+        
     }
     
 
