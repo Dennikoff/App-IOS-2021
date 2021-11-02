@@ -7,10 +7,12 @@
 
 import UIKit
 import EasyPeasy
+import TextFieldEffects
 
 protocol SignInViewDelegate:AnyObject{
     func enterButtonTapped(_ mail:String, _ password:String)
     func signUpButtonTapped()
+    func forgetPasswordTapped()
 }
 
 class SignInView: UIView {
@@ -18,13 +20,28 @@ class SignInView: UIView {
     
     weak var delegate: SignInViewDelegate?
     
+    private let myImage: UIImageView = {
+        $0.contentMode = .scaleAspectFit
+        $0.image = UIImage(named: "cigarette slash")
+        return $0
+    }(UIImageView())
+    
     private let buttonEnter: UIButton = {
         $0.setTitle("Войти", for: .normal)
         $0.setTitleColor(.white, for: .normal)
         //button.set(.darkGray, for: .normal)
-        $0.backgroundColor = .orange
+        $0.backgroundColor = UIColor(red: 254/255, green: 203/255, blue: 146/255, alpha: 1)
         $0.layer.cornerRadius = 12
         $0.addTarget(self, action: #selector(enterButtonTapped), for: .touchUpInside)
+        return $0
+    }(UIButton())
+    
+    private let buttonForgetPassword: UIButton = {
+        $0.setTitle("Забыли пароль?", for: .normal)
+        $0.setTitleColor(.gray, for: .normal)
+        //button.set(.darkGray, for: .normal)
+        $0.backgroundColor = .none
+        $0.addTarget(self, action: #selector(forgetPasswordTapped), for: .touchUpInside)
         return $0
     }(UIButton())
     
@@ -40,7 +57,8 @@ class SignInView: UIView {
     private let buttonShowPassword: UIButton = {
         let bt = UIButton()
         $0.setBackgroundImage(UIImage(systemName: "eye"), for: .normal)
-        $0.addTarget(self, action: #selector(showPassword), for: .touchUpInside)
+        $0.addTarget(self, action: #selector(showPassword), for: .touchDown)
+        $0.addTarget(self, action: #selector(hidePassword), for: .touchUpInside)
         return $0
     }(UIButton())
     
@@ -83,31 +101,36 @@ class SignInView: UIView {
         $0.numberOfLines = 0
         $0.layer.cornerRadius = 12
         $0.textColor = .black
-        $0.font = UIFont.systemFont(ofSize:k / 20)
         return $0
     }(UILabel())
     
-    private let textFieldUserName: UITextField = {
+    private let textFieldUserName: HoshiTextField = {
         $0.placeholder = "Почта"
         //let txt = UITextField(frame: CGRect(origin: CGPoint(x: 10, y:20), size:CGSize(width: 40, height: 10)), primaryAction: nil)
+        $0.placeholderFontScale = 1.0
+        $0.borderActiveColor = UIColor(red: 254/255, green: 203/255, blue: 146/255, alpha: 1)
+        $0.borderInactiveColor = .black
         $0.autocapitalizationType = .none
         return $0
-    }(UITextField())
+    }(HoshiTextField())
     
-    private let textFieldPassword: UITextField = {
+    private let textFieldPassword: HoshiTextField = {
         $0.placeholder = "Пароль"
         //let txt = UITextField(frame: CGRect(origin: CGPoint(x: 10, y:20), size:CGSize(width: 40, height: 10)), primaryAction: nil)
         $0.isSecureTextEntry = true
+        $0.placeholderFontScale = 1.0
+        $0.borderActiveColor = UIColor(red: 254/255, green: 203/255, blue: 146/255, alpha: 1)
+        $0.borderInactiveColor = .black
         $0.autocapitalizationType = .none
         return $0
-    }(UITextField())
+    }(HoshiTextField())
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         emailContainer.addSubview(textFieldUserName)
         passwordContainer.addSubview(textFieldPassword)
         passwordContainer.addSubview(buttonShowPassword)
-        [label,buttonEnter,buttonSignUp, emailContainer, passwordContainer, badMessageLabel, goodMessageLabel].forEach {
+        [myImage, label,buttonEnter, buttonForgetPassword, buttonSignUp, emailContainer, passwordContainer, badMessageLabel, goodMessageLabel].forEach {
             self.addSubview($0)
         }
     }
@@ -120,10 +143,15 @@ class SignInView: UIView {
         super.layoutSubviews()
         setlayout()
         k = self.width
-        label.font = UIFont.systemFont(ofSize:k / 8.56)
+        label.font = UIFont.systemFont(ofSize:k / 8.56, weight: .bold)
     }
     
     private func setlayout(){
+        myImage.easy.layout(
+            Right(40),
+            Top(-50),
+            Left(150)
+        )
         badMessageLabel.easy.layout(
             Left(40),
             Top(20).to(label)
@@ -135,42 +163,46 @@ class SignInView: UIView {
         label.easy.layout(
             Left(40),
             Right(50),
-            CenterY(-100)
+            Top((UIApplication.shared.windows.first?.safeAreaInsets.top ?? .zero)+122)
         )
         emailContainer.easy.layout(
             Left(40),
             Right(40),
             Top(20).to(badMessageLabel),
-            Height(35)
+            Height(50)
         )
         textFieldUserName.easy.layout(
             Left(10),
             Right(10),
-            CenterY()
+            Height(50)
         )
         passwordContainer.easy.layout(
             Left(40),
             Right(40),
             Top(10).to(emailContainer),
-            Height(35)
+            Height(50)
         )
         textFieldPassword.easy.layout(
             Left(10),
             Right(10),
-            CenterY()
+            Height(50)
         )
         buttonShowPassword.easy.layout(
             Right(5),
             Width(25),
             Height(20),
-            CenterY()
+            Bottom(10)
         )
         buttonEnter.easy.layout(
             CenterX(),
-            Top(20).to(textFieldPassword),
-            Size(CGSize(width: 100, height: 50))
+            Top(50).to(passwordContainer),
+            Size(CGSize(width: 300, height: 45))
         )
         buttonSignUp.easy.layout(
+            CenterX(),
+            Bottom(10).to(buttonForgetPassword)
+        )
+        buttonForgetPassword.easy.layout(
             CenterX(),
             Bottom(UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? .zero)
         )
@@ -183,21 +215,23 @@ class SignInView: UIView {
         delegate?.enterButtonTapped(mail!, password!)
     }
     @objc
+    func hidePassword(){
+        textFieldPassword.isSecureTextEntry = true
+        buttonShowPassword.setBackgroundImage(UIImage(systemName: "eye"), for: .normal)
+    }
+    @objc
     func showPassword(){
-        if buttonShowPassword.backgroundImage(for: .normal) == UIImage(systemName: "eye") {
-            textFieldPassword.isSecureTextEntry = false
-            buttonShowPassword.setBackgroundImage(UIImage(systemName: "eye.slash"), for: .normal)
-        }
-        else{
-            textFieldPassword.isSecureTextEntry = true
-            buttonShowPassword.setBackgroundImage(UIImage(systemName: "eye"), for: .normal)
-        }
+        textFieldPassword.isSecureTextEntry = false
+        buttonShowPassword.setBackgroundImage(UIImage(systemName: "eye.slash"), for: .normal)
     }
     @objc
     func signUpButtonTapped(){
         delegate?.signUpButtonTapped()
     }
-    
+    @objc
+    func forgetPasswordTapped(){
+        delegate?.forgetPasswordTapped()
+    }
     func showMessageBad(){
         badMessageLabel.isHidden = false
         goodMessageLabel.isHidden = true

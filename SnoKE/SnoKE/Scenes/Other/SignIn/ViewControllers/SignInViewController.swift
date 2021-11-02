@@ -23,13 +23,16 @@ class SignInViewController: UIViewController {
 }
 
 extension SignInViewController: SignInViewDelegate{
+    func forgetPasswordTapped() {
+        print("ForgetPassword button tapped")
+    }
+    
     func enterButtonTapped(_ mail:String, _ password: String) {
         if (mail == "Test" && password == "Test"){
             signInView.showMessageGood()
         } else {
             signInView.showMessageBad()
         }
-        print("Enter button tapped")
     }
     
     func signUpButtonTapped() {
