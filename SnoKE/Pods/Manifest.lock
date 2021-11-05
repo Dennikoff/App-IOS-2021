@@ -1,0 +1,21 @@
+PODS:
+  - TextFieldEffects (1.7.0)
+
+DEPENDENCIES:
+  - TextFieldEffects (from `https://github.com/raulriera/TextFieldEffects.git`)
+
+EXTERNAL SOURCES:
+  TextFieldEffects:
+    :git: https://github.com/raulriera/TextFieldEffects.git
+
+CHECKOUT OPTIONS:
+  TextFieldEffects:
+    :commit: 6bcda6335403c228b02b04ed8ba5225460762edb
+    :git: https://github.com/raulriera/TextFieldEffects.git
+
+SPEC CHECKSUMS:
+  TextFieldEffects: aa50f7045bfa2f720731ef49955b8d137a7cffab
+
+PODFILE CHECKSUM: b186b6b2e2f154db2491fcf9745f8089055a64de
+
+COCOAPODS: 1.10.1
