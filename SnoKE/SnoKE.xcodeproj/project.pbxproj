@@ -44,6 +44,7 @@
 		7738BE1E27301B7900FA15A2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738BE1D27301B7900FA15A2 /* SignUpView.swift */; };
 		7738BE2B27301E5800FA15A2 /* ViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738BE2A27301E5800FA15A2 /* ViewPreview.swift */; };
 		7738BE2E27301E7000FA15A2 /* ViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738BE2D27301E7000FA15A2 /* ViewControllerPreview.swift */; };
+		77EBDC30273ADC8C00E66517 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77EBDC2F273ADC8C00E66517 /* GoogleService-Info.plist */; };
 		BD2EA62D04826AD9610F3E93 /* Pods_SnoKE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CB1946FA81311EBA100CD0 /* Pods_SnoKE.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,7 @@
 		7738BE1D27301B7900FA15A2 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		7738BE2A27301E5800FA15A2 /* ViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPreview.swift; sourceTree = "<group>"; };
 		7738BE2D27301E7000FA15A2 /* ViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPreview.swift; sourceTree = "<group>"; };
+		77EBDC2F273ADC8C00E66517 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 				6663528F27219C720084BBA3 /* AppDelegate.swift */,
 				6663529A27219C730084BBA3 /* LaunchScreen.storyboard */,
 				6663529D27219C730084BBA3 /* Info.plist */,
+				77EBDC2F273ADC8C00E66517 /* GoogleService-Info.plist */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 			files = (
 				6663529C27219C730084BBA3 /* LaunchScreen.storyboard in Resources */,
 				6663529927219C730084BBA3 /* Assets.xcassets in Resources */,
+				77EBDC30273ADC8C00E66517 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
