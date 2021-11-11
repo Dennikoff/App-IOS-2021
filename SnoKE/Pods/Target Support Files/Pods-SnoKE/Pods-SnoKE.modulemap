@@ -1,6 +1,0 @@
-framework module Pods_SnoKE {
-  umbrella header "Pods-SnoKE-umbrella.h"
-
-  export *
-  module * { export * }
-}
