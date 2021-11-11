@@ -10,6 +10,7 @@ import EasyPeasy
 
 class HomeView: UIView {
 
+    // MARK: - Properties
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.alwaysBounceVertical = true
@@ -86,6 +87,7 @@ class HomeView: UIView {
     }()
     
     
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -95,6 +97,8 @@ class HomeView: UIView {
         super.init(coder: coder)
     }
     
+    
+    // MARK: - Layout
     override func layoutSubviews() {
         super.layoutSubviews()
         setupLayout()
@@ -102,10 +106,12 @@ class HomeView: UIView {
     
     private func setupViews() {
         backgroundColor = .systemBackground
-//        view.addSubview(firstBackgroundCircle)
-//        view.addSubview(secondBackgroundCircle)
         addSubview(scrollView)
+        addSubview(firstBackgroundCircle)
+        addSubview(secondBackgroundCircle)
+        
         scrollView.addSubview(containerView)
+        
         let views = [timeWithoutSmokingView,
                      savedMoneyView,
                      brokenCigarettesView,
@@ -117,6 +123,7 @@ class HomeView: UIView {
         views.forEach {
             containerView.addSubview($0)
         }
+        
     }
     
     
@@ -136,9 +143,20 @@ class HomeView: UIView {
         )
         
         firstBackgroundCircle.easy.layout(
-            Size(500),
-            Center(CGPoint(x: width / 2, y: -(height / 2)))
+            Size(600),
+            Center(CGPoint(x: width / 2, y: -(height / 2.5)))
         )
+        
+        secondBackgroundCircle.easy.layout(
+            Size(600),
+            Center(CGPoint(x: -width / 2, y: height / 2.5))
+        )
+        
+        // solving conflict of adding scrollView and these background imageViews
+        // this conflict forced navBar title mode not to collaple when scrolling up
+        firstBackgroundCircle.layer.zPosition = -1
+        secondBackgroundCircle.layer.zPosition = -1
+        
         
         timeWithoutSmokingView.easy.layout(
             Height(175),

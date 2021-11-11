@@ -18,7 +18,11 @@ final class HomeCoordinator: CoreCoordinator {
         let presenter = HomePresenter(coordinator: self)
         let homeVC = HomeViewController(presenter: presenter)
         configure(self, with: homeVC)
-        navigationController.navigationBar.prefersLargeTitles = true
+//        navigationController.navigationBar.prefersLargeTitles = true
+//        navigationController.navigationItem.largeTitleDisplayMode = .automatic
+        
+        
+        
         navigationController.pushViewController(homeVC, animated: false)
     }
 }
