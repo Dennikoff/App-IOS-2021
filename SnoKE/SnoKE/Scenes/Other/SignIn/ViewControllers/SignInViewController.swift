@@ -6,24 +6,38 @@
 //
 
 import UIKit
+import EasyPeasy
 
 class SignInViewController: UIViewController {
-
+    
+    let signInView = SignInView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        view.addSubview(signInView)
+        signInView.frame = view.frame
+        signInView.delegate = self
+    }
 
-        // Do any additional setup after loading the view.
+}
+
+extension SignInViewController: SignInViewDelegate{
+    func forgetPasswordTapped() {
+        print("ForgetPassword button tapped")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func enterButtonTapped(_ mail:String, _ password: String) {
+        if (mail == "Test" && password == "Test"){
+            signInView.showMessageGood()
+        } else {
+            signInView.showMessageBad()
+        }
     }
-    */
+    
+    func signUpButtonTapped() {
+        print("SignUp button tapped")
+    }
 
+    
 }
