@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let vc = SignInViewController()
+        let vc = SignUpViewController()
 //        let homeCoordinator = HomeCoordinator(navigationController: UINavigationController(), imageName: "house.fill", title: "SnoKE", tabBarItemTag: 1)
 //        let diaryCoordinator = DiaryCoordinator(navigationController: UINavigationController(), imageName: "book.closed.fill", title: "Дневник", tabBarItemTag: 2)
 //        let profileCoordinator = ProfileCoordinator(navigationController: UINavigationController(), imageName: "figure.wave", title: "Профиль", tabBarItemTag: 3)

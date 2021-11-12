@@ -73,7 +73,7 @@ class SignInView: UIView {
         return $0
     }(UIView())
     
-    private let badMessageLabel:UILabel = {
+    private let badMessageLabel: UILabel = {
         $0.text = "Не узнаю вас, попробуйте ввести данные снова"
         $0.numberOfLines = 0
         $0.textColor = .red
@@ -82,7 +82,7 @@ class SignInView: UIView {
         return $0
     }(UILabel())
     
-    private let goodMessageLabel:UILabel = {
+    private let goodMessageLabel: UILabel = {
         $0.text = "Доброго времени суток"
         $0.numberOfLines = 0
         $0.textColor = .green
@@ -91,7 +91,7 @@ class SignInView: UIView {
         return $0
     }(UILabel())
     
-    lazy var label:UILabel = {
+    lazy var label: UILabel = {
         $0.text = "Кто вы?\nНемедленно назовитесь"
         $0.numberOfLines = 0
         $0.layer.cornerRadius = 12
@@ -176,7 +176,8 @@ class SignInView: UIView {
         textFieldUserName.easy.layout(
             Left(10),
             Right(10),
-            Height(50)
+            Height(50),
+            Top()
         )
         passwordContainer.easy.layout(
             Left(40),
@@ -187,7 +188,8 @@ class SignInView: UIView {
         textFieldPassword.easy.layout(
             Left(10),
             Right(10),
-            Height(50)
+            Height(50),
+            Top()
         )
         buttonShowPassword.easy.layout(
             Right(5),
