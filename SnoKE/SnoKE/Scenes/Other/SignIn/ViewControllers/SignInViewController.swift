@@ -8,7 +8,7 @@
 import UIKit
 import EasyPeasy
 
-class SignInViewController: UIViewController {
+final class SignInViewController: UIViewController {
     
     let signInView = SignInView()
     

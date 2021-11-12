@@ -10,12 +10,12 @@ import TextFieldEffects
 import EasyPeasy
 
 protocol SignUpViewDelegate: AnyObject {
-    func signUpButtonTapped()
+    func signUpButtonTapped(email: String, password: String)
     func loginButtonTapped()
 }
 
 
-class SignUpView: UIView {
+final class SignUpView: UIView {
     
     // MARK: - Properties
     weak var delegate: SignUpViewDelegate?
@@ -89,7 +89,6 @@ class SignUpView: UIView {
         return button
     }()
     
-    
     private let signUpButton: UIButton = {
         let button = UIButton()
         button.setTitle("Зарегистрироваться", for: .normal)
@@ -115,7 +114,7 @@ class SignUpView: UIView {
     
     
     // MARK: -Methods
-    func setupView() {
+    private func setupView() {
         addSubview(backgroundImage)
         backgroundImage.easy.layout(
             Right(40),
@@ -184,11 +183,10 @@ class SignUpView: UIView {
             Bottom(50),
             Height(46)
         )
-
-        
     }
     
     
+    // MARK: - Methods
     @objc private func hidePassword() {
         passwordTextField.isSecureTextEntry = true
         buttonShowPassword.setBackgroundImage(UIImage(systemName: "eye"), for: .normal)
@@ -200,15 +198,19 @@ class SignUpView: UIView {
     }
     
     @objc private func signUpButtonTapped() {
-        delegate?.signUpButtonTapped()
-        print("📝 sign up button tapped")
+        guard let email = mailTextField.text, let password = passwordTextField.text else {
+            print("[DEBUG] Cant unwrap email and password")
+            return
+        }
+        delegate?.signUpButtonTapped(email: email, password: password)
     }
     
     @objc private func loginButtonTapped() {
         delegate?.loginButtonTapped()
-        print("💞 login button tapped")
     }
 }
+
+
 
 //struct SighUpView_Preview: PreviewProvider {
 //    static var previews: some View {

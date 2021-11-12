@@ -15,7 +15,7 @@ protocol SignInViewDelegate:AnyObject{
     func forgetPasswordTapped()
 }
 
-class SignInView: UIView {
+final class SignInView: UIView {
     private let screenSizeRelativeMultiplier: CGFloat = 0.1128
     
     weak var delegate: SignInViewDelegate?

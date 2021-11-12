@@ -20,18 +20,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let vc = SignUpViewController()
-//        let homeCoordinator = HomeCoordinator(navigationController: UINavigationController(), imageName: "house.fill", title: "SnoKE", tabBarItemTag: 1)
-//        let diaryCoordinator = DiaryCoordinator(navigationController: UINavigationController(), imageName: "book.closed.fill", title: "Дневник", tabBarItemTag: 2)
-//        let profileCoordinator = ProfileCoordinator(navigationController: UINavigationController(), imageName: "figure.wave", title: "Профиль", tabBarItemTag: 3)
-//
-//        appCoordinator = AppCoordinator(tabBarController: UITabBarController(),
-//                                        childCoordinators: [homeCoordinator,
-//                                                            diaryCoordinator,
-//                                                            profileCoordinator])
-//        appCoordinator?.start()
         
-        window.rootViewController = vc//appCoordinator?.tabBarController
+        if AuthManager.shared.isUserLoggedIn() {
+            let homeCoordinator = HomeCoordinator(navigationController: UINavigationController(), imageName: "house.fill", title: "SnoKE", tabBarItemTag: 1)
+            let diaryCoordinator = DiaryCoordinator(navigationController: UINavigationController(), imageName: "book.closed.fill", title: "Дневник", tabBarItemTag: 2)
+            let profileCoordinator = ProfileCoordinator(navigationController: UINavigationController(), imageName: "figure.wave", title: "Профиль", tabBarItemTag: 3)
+            
+            appCoordinator = AppCoordinator(tabBarController: UITabBarController(),
+                                            childCoordinators: [homeCoordinator,
+                                                                diaryCoordinator,
+                                                                profileCoordinator])
+            appCoordinator?.start()
+            window.rootViewController = appCoordinator?.tabBarController
+        } else {
+            let signUpVC = SignUpViewController()
+            window.rootViewController = signUpVC
+        }
+        
         window.makeKeyAndVisible()
         self.window = window
     }
@@ -65,5 +70,35 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 
+
+}
+
+
+extension SceneDelegate {
+    enum AppState {
+        case signUpState
+        case mainState
+    }
+    
+    func setRootViewController(to state: AppState) {
+         if let window = self.window {
+            switch state {
+            case .mainState:
+                let homeCoordinator = HomeCoordinator(navigationController: UINavigationController(), imageName: "house.fill", title: "SnoKE", tabBarItemTag: 1)
+                let diaryCoordinator = DiaryCoordinator(navigationController: UINavigationController(), imageName: "book.closed.fill", title: "Дневник", tabBarItemTag: 2)
+                let profileCoordinator = ProfileCoordinator(navigationController: UINavigationController(), imageName: "figure.wave", title: "Профиль", tabBarItemTag: 3)
+                
+                appCoordinator = AppCoordinator(tabBarController: UITabBarController(),
+                                                childCoordinators: [homeCoordinator,
+                                                                    diaryCoordinator,
+                                                                    profileCoordinator])
+                appCoordinator?.start()
+                window.rootViewController = appCoordinator?.tabBarController
+            case .signUpState:
+                let signUpVC = SignUpViewController()
+                window.rootViewController = signUpVC
+            }
+         }
+    }
 }
 
