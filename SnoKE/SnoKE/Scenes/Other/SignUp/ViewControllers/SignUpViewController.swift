@@ -15,7 +15,18 @@ protocol SignUpViewControllerProtocol {
 
 final class SignUpViewController: UIViewController {
     
+    private let presenter: SignUpPresenterProtocol? 
+    
     private let signUpView = SignUpView()
+    
+    init(presenter: SignUpPresenterProtocol) {
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         super.loadView()
@@ -32,17 +43,13 @@ final class SignUpViewController: UIViewController {
 
 extension SignUpViewController: SignUpViewDelegate {
     func signUpButtonTapped(email: String, password: String) {
-        AuthManager.shared.signUpUser(self, email: email, password: password) {
-            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.setRootViewController(to: .mainState)
-        }
-        
+        presenter?.signUpUser(self, email: email, password: password)
     }
     
     func loginButtonTapped() {
-        print("💞 login button tapped")
+        presenter?.showSignInScreen(self)
     }
 }
-
 
 extension SignUpViewController: SignUpViewControllerProtocol {
     func showSignUpErrorAlert(with message: String) {
@@ -53,6 +60,7 @@ extension SignUpViewController: SignUpViewControllerProtocol {
         self.present(alert, animated: true)
     }
 }
+
 
 
 //struct SignUpViewController_Previews: PreviewProvider {

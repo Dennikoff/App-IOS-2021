@@ -33,7 +33,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             appCoordinator?.start()
             window.rootViewController = appCoordinator?.tabBarController
         } else {
-            let signUpVC = SignUpViewController()
+            let signUpPresenter = SignUpPresenter()
+            let signUpVC = SignUpViewController(presenter: signUpPresenter)
             window.rootViewController = signUpVC
         }
         
@@ -95,10 +96,17 @@ extension SceneDelegate {
                 appCoordinator?.start()
                 window.rootViewController = appCoordinator?.tabBarController
             case .signUpState:
-                let signUpVC = SignUpViewController()
+                let signUpPresenter = SignUpPresenter()
+                let signUpVC = SignUpViewController(presenter: signUpPresenter)
                 window.rootViewController = signUpVC
             }
+            
+            UIView.transition(with: window,
+                              duration: 1,
+                              options: .transitionFlipFromRight,
+                              animations: nil)
          }
+        
     }
 }
 
