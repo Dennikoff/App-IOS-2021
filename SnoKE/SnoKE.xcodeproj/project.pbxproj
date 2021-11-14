@@ -45,6 +45,8 @@
 		7738BE2B27301E5800FA15A2 /* ViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738BE2A27301E5800FA15A2 /* ViewPreview.swift */; };
 		7738BE2E27301E7000FA15A2 /* ViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738BE2D27301E7000FA15A2 /* ViewControllerPreview.swift */; };
 		77EBDC30273ADC8C00E66517 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 77EBDC2F273ADC8C00E66517 /* GoogleService-Info.plist */; };
+		9EABEF93274117F200E960D6 /* HzViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EABEF92274117F200E960D6 /* HzViewController.swift */; };
+		9EABEF962741183000E960D6 /* HzView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EABEF952741183000E960D6 /* HzView.swift */; };
 		9EAC6A5327307A8B00233D36 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EAC6A5227307A8B00233D36 /* SignInView.swift */; };
 		BD2EA62D04826AD9610F3E93 /* Pods_SnoKE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73CB1946FA81311EBA100CD0 /* Pods_SnoKE.framework */; };
 /* End PBXBuildFile section */
@@ -92,6 +94,8 @@
 		7738BE2A27301E5800FA15A2 /* ViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPreview.swift; sourceTree = "<group>"; };
 		7738BE2D27301E7000FA15A2 /* ViewControllerPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPreview.swift; sourceTree = "<group>"; };
 		77EBDC2F273ADC8C00E66517 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9EABEF92274117F200E960D6 /* HzViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HzViewController.swift; sourceTree = "<group>"; };
+		9EABEF952741183000E960D6 /* HzView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HzView.swift; sourceTree = "<group>"; };
 		9EAC6A5227307A8B00233D36 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -283,8 +287,8 @@
 		66C0E5E4272B2E1D0009E454 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				9EABEF942741180200E960D6 /* Views */,
 				66C0E601272B52550009E454 /* Models */,
-				66C0E600272B52510009E454 /* Views */,
 				66C0E5FF272B524A0009E454 /* Presenters */,
 				66C0E5FE272B52420009E454 /* ViewControllers */,
 			);
@@ -373,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				666352B327219D8C0084BBA3 /* ProfileViewController.swift */,
+				9EABEF92274117F200E960D6 /* HzViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -382,13 +387,6 @@
 			children = (
 			);
 			path = Presenters;
-			sourceTree = "<group>";
-		};
-		66C0E600272B52510009E454 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		66C0E601272B52550009E454 /* Models */ = {
@@ -491,6 +489,14 @@
 				7738BE2A27301E5800FA15A2 /* ViewPreview.swift */,
 			);
 			path = Preview;
+			sourceTree = "<group>";
+		};
+		9EABEF942741180200E960D6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9EABEF952741183000E960D6 /* HzView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		9EAC6A5127307A6300233D36 /* View */ = {
@@ -635,6 +641,7 @@
 				666352B827219D8C0084BBA3 /* EmotionsDiaryViewController.swift in Sources */,
 				6698CA20272DA568006B9B17 /* LastAchievementView.swift in Sources */,
 				666352BD27219D8C0084BBA3 /* SignInViewController.swift in Sources */,
+				9EABEF93274117F200E960D6 /* HzViewController.swift in Sources */,
 				9EAC6A5327307A8B00233D36 /* SignInView.swift in Sources */,
 				666352BB27219D8C0084BBA3 /* ProfileViewController.swift in Sources */,
 				666352C827219DE30084BBA3 /* Extensions.swift in Sources */,
@@ -653,6 +660,7 @@
 				6698CA22272DB7F6006B9B17 /* UserWantsToSmokeButton.swift in Sources */,
 				666352D92721F6DD0084BBA3 /* TimeElementView.swift in Sources */,
 				7738BE1E27301B7900FA15A2 /* SignUpView.swift in Sources */,
+				9EABEF962741183000E960D6 /* HzView.swift in Sources */,
 				6663529227219C720084BBA3 /* SceneDelegate.swift in Sources */,
 				666352C627219DDB0084BBA3 /* Useful.swift in Sources */,
 				66C0E5E7272B3BA00009E454 /* HomeCoordinator.swift in Sources */,
