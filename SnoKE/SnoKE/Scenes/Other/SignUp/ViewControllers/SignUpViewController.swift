@@ -60,13 +60,3 @@ extension SignUpViewController: SignUpViewControllerProtocol {
         self.present(alert, animated: true)
     }
 }
-
-
-
-//struct SignUpViewController_Previews: PreviewProvider {
-//     static var previews: some View {
-//         ViewControllerPreview {
-//             SignUpViewController()
-//         }
-//     }
-// }
