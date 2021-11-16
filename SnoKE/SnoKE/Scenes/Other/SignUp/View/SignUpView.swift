@@ -106,6 +106,11 @@ final class SignUpView: UIView {
         super.init(frame: frame)
         backgroundColor = .systemBackground
         setupView()
+        mailTextField.addDoneCancelToolbar(onDone: nil,
+                                               onCancel: (target: self,
+                                                          action: #selector(mailCancelButtonTapped)))
+       passwordTextField.addDoneCancelToolbar(onDone: nil,
+                                               onCancel: (target: self, action: #selector(passwordCancelButtonTapped)))
     }
     
     required init?(coder: NSCoder) {
@@ -187,6 +192,18 @@ final class SignUpView: UIView {
     
     
     // MARK: - Methods
+    @objc
+    func mailCancelButtonTapped(){
+        mailTextField.text = ""
+        mailTextField.resignFirstResponder()
+    }
+    
+    @objc
+    func passwordCancelButtonTapped(){
+        passwordTextField.text = ""
+        passwordTextField.resignFirstResponder()
+    }
+    
     @objc private func hidePassword() {
         passwordTextField.isSecureTextEntry = true
         buttonShowPassword.setBackgroundImage(UIImage(systemName: "eye"), for: .normal)

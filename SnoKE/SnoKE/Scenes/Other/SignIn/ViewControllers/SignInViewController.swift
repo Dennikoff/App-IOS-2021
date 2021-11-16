@@ -10,7 +10,10 @@ import EasyPeasy
 
 final class SignInViewController: UIViewController {
     
-    let signInView = SignInView()
+    private let signInView = SignInView()
+    
+    private var presenter: SignInPresenterProtocol = SignInPresenter()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +39,7 @@ extension SignInViewController: SignInViewDelegate{
     }
     
     func signUpButtonTapped() {
-        print("SignUp button tapped")
+        presenter.showSignUpScreen(self)
     }
 
     

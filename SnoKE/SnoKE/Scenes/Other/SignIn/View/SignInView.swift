@@ -135,10 +135,27 @@ final class SignInView: UIView {
          goodMessageLabel].forEach {
             self.addSubview($0)
         }
+        textFieldUserName.addDoneCancelToolbar(onDone: nil,
+                                               onCancel: (target: self,
+                                                          action: #selector(userNameCancelButtonTapped)))
+        textFieldPassword.addDoneCancelToolbar(onDone: nil,
+                                               onCancel: (target: self, action: #selector(passwordCancelButtonTapped)))
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    @objc
+    func userNameCancelButtonTapped(){
+        textFieldUserName.text = ""
+        textFieldUserName.resignFirstResponder()
+    }
+    
+    @objc
+    func passwordCancelButtonTapped(){
+        textFieldPassword.text = ""
+        textFieldPassword.resignFirstResponder()
     }
     
     override func layoutSubviews() {
