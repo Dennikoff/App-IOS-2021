@@ -37,7 +37,7 @@ final class StartCongratulationsView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 31, weight: .semibold)
         label.textColor = .black
-        label.text = "29-03-2020"
+//        label.text = "29-03-2020"
         return label
     }()
     
@@ -82,6 +82,14 @@ final class StartCongratulationsView: UIView {
     
     @objc private func startButtonTapped() {
         delegate?.startButtonTapped()
+    }
+    
+    func configure() {
+        guard let finishSmokingDateStr = UserDefaults.standard.string(forKey: "com.SnoKEapp.SnoKE.finishSmokingDate") else {
+            endSmokeDateLabel.text = "error :("
+            return
+        }
+        endSmokeDateLabel.text = finishSmokingDateStr
     }
     
     private func setupViews() {

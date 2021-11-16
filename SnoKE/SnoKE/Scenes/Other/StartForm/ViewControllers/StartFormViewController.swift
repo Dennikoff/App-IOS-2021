@@ -36,9 +36,19 @@ final class StartFormViewController: UIViewController {
 
 
 extension StartFormViewController: StartFormViewDelegate {
-    func enterButtonTapped() {
+    func enterButtonTapped(numberPerDay: String, packPrice: String, numberInPack: String) {
+        UserDefaults.standard.set(numberPerDay, forKey: "com.SnoKEapp.SnoKE.numberPerDay")
+        UserDefaults.standard.set(packPrice, forKey: "com.SnoKEapp.SnoKE.packPrice")
+        UserDefaults.standard.set(numberInPack, forKey: "com.SnoKEapp.SnoKE.numberInPack")
+        
+        let df = DateFormatter()
+        df.dateFormat = "dd-MM-YYYY"
+        let finishSmokingDateStr = df.string(from: Date())
+        UserDefaults.standard.setValue(finishSmokingDateStr, forKey: "com.SnoKEapp.SnoKE.finishSmokingDate")
+
         presenter?.showStartCongratulationsScreen(self)
     }
+    
     
     func showNotAllFilledAlert() {
         presenter?.showNotAllFormsFilledAlert(self)

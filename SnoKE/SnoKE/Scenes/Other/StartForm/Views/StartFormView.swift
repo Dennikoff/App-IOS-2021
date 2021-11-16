@@ -10,7 +10,7 @@ import EasyPeasy
 import TextFieldEffects
 
 protocol StartFormViewDelegate: AnyObject {
-    func enterButtonTapped()
+    func enterButtonTapped(numberPerDay: String, packPrice: String, numberInPack: String)
     func showNotAllFilledAlert()
 }
 
@@ -116,9 +116,7 @@ class StartFormView: UIView {
         numberSmokedTextField.addDoneCancelToolbar(onDone: nil,
                                               onCancel: (target: self,
                                                          action: #selector(numberSmokedTextKeyboardButtonTapped)))
-        
     }
-    
     
     
     required init?(coder: NSCoder) {
@@ -129,6 +127,7 @@ class StartFormView: UIView {
         super.layoutSubviews()
         setLayout()
     }
+    
     
     @objc private func numberInPackTextKeyboardButtonTapped() {
         numberInPackTextField.text = ""
@@ -154,7 +153,9 @@ class StartFormView: UIView {
         if numberSmokedText.isEmpty || numberInPackText.isEmpty || priceText.isEmpty {
             delegate?.showNotAllFilledAlert()
         } else {
-            delegate?.enterButtonTapped()
+            delegate?.enterButtonTapped(numberPerDay: numberSmokedText,
+                                        packPrice: priceText,
+                                        numberInPack: numberInPackText)
         }
         
     }

@@ -25,12 +25,13 @@ final class StartCongratulationsViewController: UIViewController {
     override func loadView() {
         super.loadView()
         view = startCongratulationsView
-        startCongratulationsView.delegate = self
+
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        startCongratulationsView.configure()
+        startCongratulationsView.delegate = self
     }
     
 }
