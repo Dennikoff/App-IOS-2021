@@ -29,7 +29,7 @@ final class SignInView: UIView {
     private let buttonEnter: UIButton = {
         $0.setTitle("Войти", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        $0.backgroundColor = UIColor(red: 254/255, green: 203/255, blue: 146/255, alpha: 1)
+        $0.backgroundColor = .accentColor
         $0.layer.cornerRadius = 12
         $0.addTarget(self, action: #selector(enterButtonTapped), for: .touchUpInside)
         return $0

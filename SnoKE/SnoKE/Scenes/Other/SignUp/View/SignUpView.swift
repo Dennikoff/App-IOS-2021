@@ -94,7 +94,7 @@ final class SignUpView: UIView {
         button.setTitle("Зарегистрироваться", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17.0)
-        button.backgroundColor = UIColor(red: 254/255, green: 203/255, blue: 146/255, alpha: 1)
+        button.backgroundColor = .accentColor
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         return button

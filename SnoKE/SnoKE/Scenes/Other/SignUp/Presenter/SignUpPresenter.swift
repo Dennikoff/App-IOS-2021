@@ -9,15 +9,17 @@ import UIKit
 
 
 protocol SignUpPresenterProtocol {
-    func signUpUser(_ vc: SignUpViewControllerProtocol, email: String, password: String)
+    func signUpUser<T: UIViewController & SignUpViewControllerProtocol>(_ vc: T, email: String, password: String)
     func showSignInScreen(_ vc: UIViewController)
 }
 
 final class SignUpPresenter: SignUpPresenterProtocol {
     
-    func signUpUser(_ vc: SignUpViewControllerProtocol, email: String, password: String) {
+    func signUpUser<T: UIViewController & SignUpViewControllerProtocol>(_ vc: T, email: String, password: String) {
         AuthManager.shared.signUpUser(vc, email: email, password: password) {
-            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.setRootViewController(to: .mainState)
+            let startFormVC = StartFormViewController()
+            startFormVC.modalPresentationStyle = .fullScreen
+            vc.present(startFormVC, animated: true)
         }
     }
     

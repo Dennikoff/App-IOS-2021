@@ -57,6 +57,10 @@ final class AuthManager {
         }
     }
     
+    func formFilled() {
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.setRootViewController(to: .mainState)
+    }
+    
     func isUserLoggedIn() -> Bool {
         return Auth.auth().currentUser != nil
     }

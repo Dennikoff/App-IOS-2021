@@ -11,75 +11,72 @@ import TextFieldEffects
 
 class StartFormView: UIView {
     
-    private let cigaretteImage:UIImageView = {
+    private let cigaretteImage: UIImageView = {
         $0.image = UIImage(named: "cigarette broken")
         $0.alpha = 0.3
         $0.contentMode = .scaleAspectFit
         return $0
     }(UIImageView())
     
-    private let enterButton:UIButton = {
+    private let enterButton: UIButton = {
         $0.setTitle("Войти", for: .normal)
         $0.layer.cornerRadius = 13
-        $0.backgroundColor = UIColor(red: 254/255, green: 203/255, blue: 146/255, alpha: 1)
+        $0.backgroundColor = .accentColor
+        $0.addTarget(self, action: #selector(enterButtonTapped), for: .touchUpInside)
         return $0
     }(UIButton())
     
-    private let numberSmokedLabel:UILabel = {
+    private let numberSmokedLabel: UILabel = {
         $0.text = "Сколько сигарет в день Вы курили?"
-        $0.textColor = UIColor(red: 254/255, green: 203/255, blue: 146/255, alpha: 1)
+        $0.textColor = .accentColor
         return $0
     }(UILabel())
     
-    private let priceLabel:UILabel = {
+    private let priceLabel: UILabel = {
         $0.text = "Сколько рублей стоила пачка?"
-        $0.textColor = UIColor(red: 254/255, green: 203/255, blue: 146/255, alpha: 1)
+        $0.textColor = .accentColor
         return $0
     }(UILabel())
     
-    private let numberInPackLabel:UILabel = {
+    private let numberInPackLabel: UILabel = {
         $0.text = "Сколько сигарет было в пачке?"
-        $0.textColor = UIColor(red: 254/255, green: 203/255, blue: 146/255, alpha: 1)
+        $0.textColor = .accentColor
         return $0
     }(UILabel())
     
     private let numberSmokedContainer:UIView = {
-        $0.backgroundColor = .none
         $0.layer.cornerRadius = 13
         $0.layer.borderWidth = 1
-        $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UIView())
     
-    private let priceContainer:UIView = {
-        $0.backgroundColor = .none
+    private let priceContainer: UIView = {
         $0.layer.cornerRadius = 13
         $0.layer.borderWidth = 1
-        $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UIView())
     
-    private let numberInPackContainer:UIView = {
-        $0.backgroundColor = .none
+    private let numberInPackContainer: UIView = {
         $0.layer.cornerRadius = 13
         $0.layer.borderWidth = 1
-        $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UIView())
     
-    private let numberSmokedText:  UITextField = {
+    private let numberSmokedText: UITextField = {
         $0.placeholder = "Кол-во сигарет"
         $0.keyboardType = .numberPad
+        $0.addDoneCancelToolbar()
         return $0
     }(UITextField())
     
-    private let priceText:  UITextField = {
+    private let priceText: UITextField = {
         $0.placeholder = "RUB"
         $0.keyboardType = .numberPad
+        $0.addDoneCancelToolbar()
         return $0
     }(UITextField())
     
-    private let numberInPackText:  UITextField = {
+    private let numberInPackText: UITextField = {
         $0.placeholder = "Кол-во сигарет"
         $0.keyboardType = .numberPad
         return $0
@@ -100,7 +97,22 @@ class StartFormView: UIView {
          enterButton].forEach{
             self.addSubview($0)
         }
+        
+        priceText.addDoneCancelToolbar(onDone: nil,
+                                       onCancel: (target: self,
+                                                  action: #selector(priceTextKeyboardButtonTapped)))
+        
+        numberInPackText.addDoneCancelToolbar(onDone: nil,
+                                              onCancel: (target: self,
+                                                         action: #selector(numberInPackTextKeyboardButtonTapped)))
+        
+        numberSmokedText.addDoneCancelToolbar(onDone: nil,
+                                              onCancel: (target: self,
+                                                         action: #selector(numberSmokedTextKeyboardButtonTapped)))
+        
     }
+    
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -109,6 +121,25 @@ class StartFormView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         setLayout()
+    }
+    
+    @objc private func numberInPackTextKeyboardButtonTapped() {
+        numberInPackText.text = ""
+        numberInPackText.resignFirstResponder()
+    }
+    
+    @objc private func priceTextKeyboardButtonTapped() {
+        priceText.text = ""
+        priceText.resignFirstResponder()
+    }
+    
+    @objc private func numberSmokedTextKeyboardButtonTapped() {
+        numberSmokedText.text = ""
+        numberSmokedText.resignFirstResponder()
+    }
+    
+    @objc private func enterButtonTapped() {
+        AuthManager.shared.formFilled()
     }
     
     private func setLayout(){

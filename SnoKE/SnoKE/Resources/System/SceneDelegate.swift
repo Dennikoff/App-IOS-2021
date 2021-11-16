@@ -21,24 +21,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
-//        if AuthManager.shared.isUserLoggedIn() {
-//            let homeCoordinator = HomeCoordinator(navigationController: UINavigationController(), imageName: "house.fill", title: "SnoKE", tabBarItemTag: 1)
-//            let diaryCoordinator = DiaryCoordinator(navigationController: UINavigationController(), imageName: "book.closed.fill", title: "Дневник", tabBarItemTag: 2)
-//            let profileCoordinator = ProfileCoordinator(navigationController: UINavigationController(), imageName: "figure.wave", title: "Профиль", tabBarItemTag: 3)
-//
-//            appCoordinator = AppCoordinator(tabBarController: UITabBarController(),
-//                                            childCoordinators: [homeCoordinator,
-//                                                                diaryCoordinator,
-//                                                                profileCoordinator])
-//            appCoordinator?.start()
-//            window.rootViewController = appCoordinator?.tabBarController
-//        } else {
-//            let signUpPresenter = SignUpPresenter()
-//            let signUpVC = SignUpViewController(presenter: signUpPresenter)
-//            window.rootViewController = signUpVC
-//        }
-        let vc = StartFormViewController()
-        window.rootViewController = vc
+        if AuthManager.shared.isUserLoggedIn() {
+            let homeCoordinator = HomeCoordinator(navigationController: UINavigationController(), imageName: "house.fill", title: "SnoKE", tabBarItemTag: 1)
+            let diaryCoordinator = DiaryCoordinator(navigationController: UINavigationController(), imageName: "book.closed.fill", title: "Дневник", tabBarItemTag: 2)
+            let profileCoordinator = ProfileCoordinator(navigationController: UINavigationController(), imageName: "figure.wave", title: "Профиль", tabBarItemTag: 3)
+
+            appCoordinator = AppCoordinator(tabBarController: UITabBarController(),
+                                            childCoordinators: [homeCoordinator,
+                                                                diaryCoordinator,
+                                                                profileCoordinator])
+            appCoordinator?.start()
+            window.rootViewController = appCoordinator?.tabBarController
+        } else {
+            let signUpPresenter = SignUpPresenter()
+            let signUpVC = SignUpViewController(presenter: signUpPresenter)
+            window.rootViewController = signUpVC
+        }
+//        let vc = StartFormViewController()
+//        window.rootViewController = vc
         window.makeKeyAndVisible()
         self.window = window
     }

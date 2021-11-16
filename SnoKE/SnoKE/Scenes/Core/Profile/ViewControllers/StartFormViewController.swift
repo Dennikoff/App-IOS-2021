@@ -9,12 +9,15 @@ import UIKit
 
 class StartFormViewController: UIViewController {
     
-    let startFormView = StartFormView()
+    private var startFormView = StartFormView()
+    
+    override func loadView() {
+        super.loadView()
+        view = startFormView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        view.addSubview(startFormView)
-        startFormView.frame = view.frame
+        view.backgroundColor = .systemBackground
     }
 }
