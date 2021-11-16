@@ -33,6 +33,10 @@
 		6698CA2C272EEAA8006B9B17 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6698CA2B272EEAA8006B9B17 /* HomeView.swift */; };
 		66B1DDAA27442BA400BD0A15 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1DDA927442BA400BD0A15 /* UITextField.swift */; };
 		66B1DDAC27442D6500BD0A15 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1DDAB27442D6500BD0A15 /* UIColor.swift */; };
+		66B1DDB827445BFF00BD0A15 /* StartFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1DDB727445BFF00BD0A15 /* StartFormPresenter.swift */; };
+		66B1DDBE27445E3F00BD0A15 /* StartCongratulationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1DDBD27445E3F00BD0A15 /* StartCongratulationsView.swift */; };
+		66B1DDC027445E5800BD0A15 /* StartCongratulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1DDBF27445E5800BD0A15 /* StartCongratulationsViewController.swift */; };
+		66B1DDC22744673600BD0A15 /* StartCongratulationsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1DDC12744673600BD0A15 /* StartCongratulationsPresenter.swift */; };
 		66C0E5E1272B2DB10009E454 /* AppCorrdinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0E5E0272B2DB10009E454 /* AppCorrdinator.swift */; };
 		66C0E5E7272B3BA00009E454 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0E5E6272B3BA00009E454 /* HomeCoordinator.swift */; };
 		66C0E5E9272B3BBE0009E454 /* DiaryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0E5E8272B3BBE0009E454 /* DiaryCoordinator.swift */; };
@@ -84,6 +88,10 @@
 		6698CA2B272EEAA8006B9B17 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		66B1DDA927442BA400BD0A15 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		66B1DDAB27442D6500BD0A15 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		66B1DDB727445BFF00BD0A15 /* StartFormPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFormPresenter.swift; sourceTree = "<group>"; };
+		66B1DDBD27445E3F00BD0A15 /* StartCongratulationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCongratulationsView.swift; sourceTree = "<group>"; };
+		66B1DDBF27445E5800BD0A15 /* StartCongratulationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCongratulationsViewController.swift; sourceTree = "<group>"; };
+		66B1DDC12744673600BD0A15 /* StartCongratulationsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCongratulationsPresenter.swift; sourceTree = "<group>"; };
 		66C0E5E0272B2DB10009E454 /* AppCorrdinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCorrdinator.swift; sourceTree = "<group>"; };
 		66C0E5E6272B3BA00009E454 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		66C0E5E8272B3BBE0009E454 /* DiaryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryCoordinator.swift; sourceTree = "<group>"; };
@@ -198,6 +206,74 @@
 			path = UserSmoked;
 			sourceTree = "<group>";
 		};
+		66B1DDB327445A1200BD0A15 /* StartForm */ = {
+			isa = PBXGroup;
+			children = (
+				66B1DDB627445BF100BD0A15 /* Presenters */,
+				66B1DDB527445A4B00BD0A15 /* ViewControllers */,
+				66B1DDB427445A4200BD0A15 /* Views */,
+			);
+			path = StartForm;
+			sourceTree = "<group>";
+		};
+		66B1DDB427445A4200BD0A15 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9EABEF952741183000E960D6 /* StartFormView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		66B1DDB527445A4B00BD0A15 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9EABEF92274117F200E960D6 /* StartFormViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		66B1DDB627445BF100BD0A15 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				66B1DDB727445BFF00BD0A15 /* StartFormPresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		66B1DDB927445E0700BD0A15 /* StartCongratulations */ = {
+			isa = PBXGroup;
+			children = (
+				66B1DDBC27445E2A00BD0A15 /* ViewControllers */,
+				66B1DDBB27445E2400BD0A15 /* Presenters */,
+				66B1DDBA27445E1D00BD0A15 /* Views */,
+			);
+			path = StartCongratulations;
+			sourceTree = "<group>";
+		};
+		66B1DDBA27445E1D00BD0A15 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				66B1DDBD27445E3F00BD0A15 /* StartCongratulationsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		66B1DDBB27445E2400BD0A15 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				66B1DDC12744673600BD0A15 /* StartCongratulationsPresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		66B1DDBC27445E2A00BD0A15 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				66B1DDBF27445E5800BD0A15 /* StartCongratulationsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		66C0E5D9272B2CEE0009E454 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +296,8 @@
 		66C0E5DB272B2CFF0009E454 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				66B1DDB927445E0700BD0A15 /* StartCongratulations */,
+				66B1DDB327445A1200BD0A15 /* StartForm */,
 				7738BE2827301E2300FA15A2 /* Preview */,
 				6698CA28272DC154006B9B17 /* UserSmoked */,
 				6698CA25272DBF86006B9B17 /* UserWantsToSmoke */,
@@ -385,7 +463,6 @@
 			isa = PBXGroup;
 			children = (
 				666352B327219D8C0084BBA3 /* ProfileViewController.swift */,
-				9EABEF92274117F200E960D6 /* StartFormViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -503,7 +580,6 @@
 		9EABEF942741180200E960D6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9EABEF952741183000E960D6 /* StartFormView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -642,6 +718,7 @@
 				666352B727219D8C0084BBA3 /* AchievementsViewController.swift in Sources */,
 				666352BC27219D8C0084BBA3 /* SignUpViewController.swift in Sources */,
 				6698CA2A272DC162006B9B17 /* ViewController2.swift in Sources */,
+				66B1DDB827445BFF00BD0A15 /* StartFormPresenter.swift in Sources */,
 				6663529027219C720084BBA3 /* AppDelegate.swift in Sources */,
 				666352CA27219FE00084BBA3 /* TimeWithoutSmokingView.swift in Sources */,
 				7738BE2E27301E7000FA15A2 /* ViewControllerPreview.swift in Sources */,
@@ -656,6 +733,7 @@
 				66B1DDAA27442BA400BD0A15 /* UITextField.swift in Sources */,
 				666352C827219DE30084BBA3 /* Extensions.swift in Sources */,
 				6698CA2C272EEAA8006B9B17 /* HomeView.swift in Sources */,
+				66B1DDC22744673600BD0A15 /* StartCongratulationsPresenter.swift in Sources */,
 				66D2FDD2273F31950017CB4D /* SignUpPresenter.swift in Sources */,
 				66C0E60F272B549E0009E454 /* HomePresenter.swift in Sources */,
 				66B1DDAC27442D6500BD0A15 /* UIColor.swift in Sources */,
@@ -664,10 +742,12 @@
 				666352D42721E7DF0084BBA3 /* SecondaryTrackerModel.swift in Sources */,
 				666352C427219DB60084BBA3 /* AuthManager.swift in Sources */,
 				66C0E5F0272B42FD0009E454 /* ChildCoordinatorProtocol.swift in Sources */,
+				66B1DDBE27445E3F00BD0A15 /* StartCongratulationsView.swift in Sources */,
 				6698CA27272DBFB0006B9B17 /* ViewController.swift in Sources */,
 				66C0E5EE272B42ED0009E454 /* MainCoordinatorProtocol.swift in Sources */,
 				66C0E5E1272B2DB10009E454 /* AppCorrdinator.swift in Sources */,
 				666352CE2721AED40084BBA3 /* SecondaryTrackerView.swift in Sources */,
+				66B1DDC027445E5800BD0A15 /* StartCongratulationsViewController.swift in Sources */,
 				7738BE2B27301E5800FA15A2 /* ViewPreview.swift in Sources */,
 				6698CA22272DB7F6006B9B17 /* UserWantsToSmokeButton.swift in Sources */,
 				666352D92721F6DD0084BBA3 /* TimeElementView.swift in Sources */,

@@ -37,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let signUpVC = SignUpViewController(presenter: signUpPresenter)
             window.rootViewController = signUpVC
         }
-//        let vc = StartFormViewController()
+//        let vc = StartCongratulationsViewController()
 //        window.rootViewController = vc
         window.makeKeyAndVisible()
         self.window = window

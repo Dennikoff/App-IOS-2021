@@ -57,7 +57,7 @@ final class AuthManager {
         }
     }
     
-    func formFilled() {
+    func finishAuth() {
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.setRootViewController(to: .mainState)
     }
     

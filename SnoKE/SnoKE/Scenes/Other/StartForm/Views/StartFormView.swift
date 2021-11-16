@@ -9,7 +9,14 @@ import UIKit
 import EasyPeasy
 import TextFieldEffects
 
+protocol StartFormViewDelegate: AnyObject {
+    func enterButtonTapped()
+    func showNotAllFilledAlert()
+}
+
 class StartFormView: UIView {
+    
+    weak var delegate: StartFormViewDelegate?
     
     private let cigaretteImage: UIImageView = {
         $0.image = UIImage(named: "cigarette broken")
@@ -62,21 +69,21 @@ class StartFormView: UIView {
         return $0
     }(UIView())
     
-    private let numberSmokedText: UITextField = {
+    private let numberSmokedTextField: UITextField = {
         $0.placeholder = "Кол-во сигарет"
         $0.keyboardType = .numberPad
         $0.addDoneCancelToolbar()
         return $0
     }(UITextField())
     
-    private let priceText: UITextField = {
+    private let priceTextField: UITextField = {
         $0.placeholder = "RUB"
         $0.keyboardType = .numberPad
         $0.addDoneCancelToolbar()
         return $0
     }(UITextField())
     
-    private let numberInPackText: UITextField = {
+    private let numberInPackTextField: UITextField = {
         $0.placeholder = "Кол-во сигарет"
         $0.keyboardType = .numberPad
         return $0
@@ -84,9 +91,9 @@ class StartFormView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        numberSmokedContainer.addSubview(numberSmokedText)
-        priceContainer.addSubview(priceText)
-        numberInPackContainer.addSubview(numberInPackText)
+        numberSmokedContainer.addSubview(numberSmokedTextField)
+        priceContainer.addSubview(priceTextField)
+        numberInPackContainer.addSubview(numberInPackTextField)
         [cigaretteImage,
          numberSmokedLabel,
          priceLabel,
@@ -98,15 +105,15 @@ class StartFormView: UIView {
             self.addSubview($0)
         }
         
-        priceText.addDoneCancelToolbar(onDone: nil,
+        priceTextField.addDoneCancelToolbar(onDone: nil,
                                        onCancel: (target: self,
                                                   action: #selector(priceTextKeyboardButtonTapped)))
         
-        numberInPackText.addDoneCancelToolbar(onDone: nil,
+        numberInPackTextField.addDoneCancelToolbar(onDone: nil,
                                               onCancel: (target: self,
                                                          action: #selector(numberInPackTextKeyboardButtonTapped)))
         
-        numberSmokedText.addDoneCancelToolbar(onDone: nil,
+        numberSmokedTextField.addDoneCancelToolbar(onDone: nil,
                                               onCancel: (target: self,
                                                          action: #selector(numberSmokedTextKeyboardButtonTapped)))
         
@@ -124,22 +131,32 @@ class StartFormView: UIView {
     }
     
     @objc private func numberInPackTextKeyboardButtonTapped() {
-        numberInPackText.text = ""
-        numberInPackText.resignFirstResponder()
+        numberInPackTextField.text = ""
+        numberInPackTextField.resignFirstResponder()
     }
     
     @objc private func priceTextKeyboardButtonTapped() {
-        priceText.text = ""
-        priceText.resignFirstResponder()
+        priceTextField.text = ""
+        priceTextField.resignFirstResponder()
     }
     
     @objc private func numberSmokedTextKeyboardButtonTapped() {
-        numberSmokedText.text = ""
-        numberSmokedText.resignFirstResponder()
+        numberSmokedTextField.text = ""
+        numberSmokedTextField.resignFirstResponder()
     }
     
     @objc private func enterButtonTapped() {
-        AuthManager.shared.formFilled()
+        guard let numberSmokedText = numberSmokedTextField.text,
+              let numberInPackText = numberInPackTextField.text,
+              let priceText = priceTextField.text else {
+            return
+        }
+        if numberSmokedText.isEmpty || numberInPackText.isEmpty || priceText.isEmpty {
+            delegate?.showNotAllFilledAlert()
+        } else {
+            delegate?.enterButtonTapped()
+        }
+        
     }
     
     private func setLayout(){
@@ -191,7 +208,7 @@ class StartFormView: UIView {
             CenterX()
         )
         
-        [numberSmokedText,priceText,numberInPackText].forEach{
+        [numberSmokedTextField,priceTextField,numberInPackTextField].forEach{
             $0.easy.layout(
                 Left(10),
                 Right(10),

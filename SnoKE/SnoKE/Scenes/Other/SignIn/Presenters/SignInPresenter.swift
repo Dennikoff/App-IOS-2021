@@ -12,11 +12,12 @@ protocol SignInPresenterProtocol:AnyObject{
 }
 
 final class SignInPresenter:SignInPresenterProtocol{
+    
     func showSignUpScreen(_ vc: UIViewController) {
         let signUpPresenter = SignUpPresenter()
         let signUpVC = SignUpViewController(presenter: signUpPresenter)
         signUpVC.modalPresentationStyle = .fullScreen
-        vc.present(signUpVC, animated: true)
+        vc.present(signUpVC, animated: false)
     }
     
     
