@@ -7,14 +7,14 @@
 
 import UIKit
 
-class HzViewController: UIViewController {
+class StartFormViewController: UIViewController {
     
-    let hzView = HzView()
+    let startFormView = StartFormView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        view.addSubview(hzView)
-        hzView.frame = view.frame
+        view.addSubview(startFormView)
+        startFormView.frame = view.frame
     }
 }
