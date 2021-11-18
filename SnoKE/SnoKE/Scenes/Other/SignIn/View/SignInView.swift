@@ -9,14 +9,14 @@ import UIKit
 import EasyPeasy
 import TextFieldEffects
 
-protocol SignInViewDelegate:AnyObject{
-    func enterButtonTapped(_ mail:String, _ password:String)
+protocol SignInViewDelegate: AnyObject {
+    func enterButtonTapped(_ mail: String, _ password: String)
     func signUpButtonTapped()
     func forgetPasswordTapped()
 }
 
-class SignInView: UIView {
-    var k = 0.0
+final class SignInView: UIView {
+    private let screenSizeRelativeMultiplier: CGFloat = 0.1128
     
     weak var delegate: SignInViewDelegate?
     
@@ -29,8 +29,7 @@ class SignInView: UIView {
     private let buttonEnter: UIButton = {
         $0.setTitle("Войти", for: .normal)
         $0.setTitleColor(.white, for: .normal)
-        //button.set(.darkGray, for: .normal)
-        $0.backgroundColor = UIColor(red: 254/255, green: 203/255, blue: 146/255, alpha: 1)
+        $0.backgroundColor = .accentColor
         $0.layer.cornerRadius = 12
         $0.addTarget(self, action: #selector(enterButtonTapped), for: .touchUpInside)
         return $0
@@ -39,7 +38,6 @@ class SignInView: UIView {
     private let buttonForgetPassword: UIButton = {
         $0.setTitle("Забыли пароль?", for: .normal)
         $0.setTitleColor(.gray, for: .normal)
-        //button.set(.darkGray, for: .normal)
         $0.backgroundColor = .none
         $0.addTarget(self, action: #selector(forgetPasswordTapped), for: .touchUpInside)
         return $0
@@ -48,7 +46,6 @@ class SignInView: UIView {
     private let buttonSignUp: UIButton = {
         $0.setTitle("Зарегистрироваться", for: .normal)
         $0.setTitleColor(.gray, for: .normal)
-        //button.set(.darkGray, for: .normal)
         $0.backgroundColor = .none
         $0.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         return $0
@@ -63,7 +60,6 @@ class SignInView: UIView {
     }(UIButton())
     
     private var emailContainer: UIView = {
-        //$0.layer.borderWidth = 0.5
         $0.layer.cornerRadius = 8
         $0.backgroundColor = .none
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -71,14 +67,13 @@ class SignInView: UIView {
     }(UIView())
     
     private var passwordContainer: UIView = {
-        //$0.layer.borderWidth = 0.5
         $0.layer.cornerRadius = 8
         $0.backgroundColor = .none
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(UIView())
     
-    private let badMessageLabel:UILabel = {
+    private let badMessageLabel: UILabel = {
         $0.text = "Не узнаю вас, попробуйте ввести данные снова"
         $0.numberOfLines = 0
         $0.textColor = .red
@@ -87,7 +82,7 @@ class SignInView: UIView {
         return $0
     }(UILabel())
     
-    private let goodMessageLabel:UILabel = {
+    private let goodMessageLabel: UILabel = {
         $0.text = "Доброго времени суток"
         $0.numberOfLines = 0
         $0.textColor = .green
@@ -96,7 +91,7 @@ class SignInView: UIView {
         return $0
     }(UILabel())
     
-    lazy var label:UILabel = {
+    lazy var label: UILabel = {
         $0.text = "Кто вы?\nНемедленно назовитесь"
         $0.numberOfLines = 0
         $0.layer.cornerRadius = 12
@@ -106,7 +101,6 @@ class SignInView: UIView {
     
     private let textFieldUserName: HoshiTextField = {
         $0.placeholder = "Почта"
-        //let txt = UITextField(frame: CGRect(origin: CGPoint(x: 10, y:20), size:CGSize(width: 40, height: 10)), primaryAction: nil)
         $0.placeholderFontScale = 1.0
         $0.borderActiveColor = UIColor(red: 254/255, green: 203/255, blue: 146/255, alpha: 1)
         $0.borderInactiveColor = .black
@@ -116,7 +110,6 @@ class SignInView: UIView {
     
     private let textFieldPassword: HoshiTextField = {
         $0.placeholder = "Пароль"
-        //let txt = UITextField(frame: CGRect(origin: CGPoint(x: 10, y:20), size:CGSize(width: 40, height: 10)), primaryAction: nil)
         $0.isSecureTextEntry = true
         $0.placeholderFontScale = 1.0
         $0.borderActiveColor = UIColor(red: 254/255, green: 203/255, blue: 146/255, alpha: 1)
@@ -130,20 +123,45 @@ class SignInView: UIView {
         emailContainer.addSubview(textFieldUserName)
         passwordContainer.addSubview(textFieldPassword)
         passwordContainer.addSubview(buttonShowPassword)
-        [myImage, label,buttonEnter, buttonForgetPassword, buttonSignUp, emailContainer, passwordContainer, badMessageLabel, goodMessageLabel].forEach {
+        
+        [myImage,
+         label,
+         buttonEnter,
+         buttonForgetPassword,
+         buttonSignUp,
+         emailContainer,
+         passwordContainer,
+         badMessageLabel,
+         goodMessageLabel].forEach {
             self.addSubview($0)
         }
+        textFieldUserName.addDoneCancelToolbar(onDone: nil,
+                                               onCancel: (target: self,
+                                                          action: #selector(userNameCancelButtonTapped)))
+        textFieldPassword.addDoneCancelToolbar(onDone: nil,
+                                               onCancel: (target: self, action: #selector(passwordCancelButtonTapped)))
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
+    @objc
+    func userNameCancelButtonTapped(){
+        textFieldUserName.text = ""
+        textFieldUserName.resignFirstResponder()
+    }
+    
+    @objc
+    func passwordCancelButtonTapped(){
+        textFieldPassword.text = ""
+        textFieldPassword.resignFirstResponder()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         setlayout()
-        k = self.width
-        label.font = UIFont.systemFont(ofSize:k / 8.56, weight: .bold)
+        label.font = .systemFont(ofSize: width * screenSizeRelativeMultiplier, weight: .bold)
     }
     
     private func setlayout(){
@@ -154,6 +172,7 @@ class SignInView: UIView {
         )
         badMessageLabel.easy.layout(
             Left(40),
+            Right(40),
             Top(20).to(label)
         )
         goodMessageLabel.easy.layout(
@@ -174,7 +193,8 @@ class SignInView: UIView {
         textFieldUserName.easy.layout(
             Left(10),
             Right(10),
-            Height(50)
+            Height(50),
+            Top()
         )
         passwordContainer.easy.layout(
             Left(40),
@@ -185,7 +205,8 @@ class SignInView: UIView {
         textFieldPassword.easy.layout(
             Left(10),
             Right(10),
-            Height(50)
+            Height(50),
+            Top()
         )
         buttonShowPassword.easy.layout(
             Right(5),
@@ -207,6 +228,7 @@ class SignInView: UIView {
             Bottom(UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? .zero)
         )
     }
+    
     @objc
     func enterButtonTapped(){
         //guard let сделать
@@ -214,24 +236,29 @@ class SignInView: UIView {
         let password = textFieldPassword.text
         delegate?.enterButtonTapped(mail!, password!)
     }
+    
     @objc
     func hidePassword(){
         textFieldPassword.isSecureTextEntry = true
         buttonShowPassword.setBackgroundImage(UIImage(systemName: "eye"), for: .normal)
     }
+    
     @objc
     func showPassword(){
         textFieldPassword.isSecureTextEntry = false
         buttonShowPassword.setBackgroundImage(UIImage(systemName: "eye.slash"), for: .normal)
     }
+    
     @objc
     func signUpButtonTapped(){
         delegate?.signUpButtonTapped()
     }
+    
     @objc
     func forgetPasswordTapped(){
         delegate?.forgetPasswordTapped()
     }
+    
     func showMessageBad(){
         badMessageLabel.isHidden = false
         goodMessageLabel.isHidden = true

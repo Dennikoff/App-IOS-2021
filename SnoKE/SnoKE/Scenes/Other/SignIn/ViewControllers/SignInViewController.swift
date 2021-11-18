@@ -8,9 +8,12 @@
 import UIKit
 import EasyPeasy
 
-class SignInViewController: UIViewController {
+final class SignInViewController: UIViewController {
     
-    let signInView = SignInView()
+    private let signInView = SignInView()
+    
+    private var presenter: SignInPresenterProtocol = SignInPresenter()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,16 +31,22 @@ extension SignInViewController: SignInViewDelegate{
     }
     
     func enterButtonTapped(_ mail:String, _ password: String) {
-        if (mail == "Test" && password == "Test"){
-            signInView.showMessageGood()
-        } else {
-            signInView.showMessageBad()
-        }
+        presenter.signIn(self, email: mail, password: password)
     }
     
     func signUpButtonTapped() {
-        print("SignUp button tapped")
+        presenter.showSignUpScreen(self)
+    }
+}
+
+
+extension SignInViewController: AuthViewControllerProtocol {
+    func showSignUpErrorAlert(with message: String) {
+        let alert = UIAlertController(title: "Что-то пошло не так...",
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
     }
 
-    
 }

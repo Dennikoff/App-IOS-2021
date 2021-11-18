@@ -65,4 +65,3 @@ class HomeViewController: UIViewController {
         homePresenter?.userSmokedButtonTapped()
     }
 }
-
