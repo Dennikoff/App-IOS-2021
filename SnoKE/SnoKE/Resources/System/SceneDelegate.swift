@@ -31,6 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //                                                            profileCoordinator])
 //        appCoordinator?.start()
         
+        
         window.rootViewController = vc//appCoordinator?.tabBarController
         window.makeKeyAndVisible()
         self.window = window
