@@ -9,7 +9,7 @@ import UIKit
 import EasyPeasy
 import TextFieldEffects
 
-protocol SignInViewDelegate:AnyObject{
+protocol SignInViewDelegate: AnyObject {
     func enterButtonTapped(_ mail: String, _ password: String)
     func signUpButtonTapped()
     func forgetPasswordTapped()

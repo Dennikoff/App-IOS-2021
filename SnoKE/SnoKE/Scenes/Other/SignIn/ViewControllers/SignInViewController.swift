@@ -31,16 +31,22 @@ extension SignInViewController: SignInViewDelegate{
     }
     
     func enterButtonTapped(_ mail:String, _ password: String) {
-        if (mail == "Test" && password == "Test"){
-            signInView.showMessageGood()
-        } else {
-            signInView.showMessageBad()
-        }
+        presenter.signIn(self, email: mail, password: password)
     }
     
     func signUpButtonTapped() {
         presenter.showSignUpScreen(self)
     }
+}
 
-    
+
+extension SignInViewController: AuthViewControllerProtocol {
+    func showSignUpErrorAlert(with message: String) {
+        let alert = UIAlertController(title: "Что-то пошло не так...",
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
+    }
+
 }

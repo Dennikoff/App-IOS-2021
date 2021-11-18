@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-protocol SignUpViewControllerProtocol {
+protocol AuthViewControllerProtocol {
     func showSignUpErrorAlert(with message: String)
 }
 
@@ -51,7 +51,7 @@ extension SignUpViewController: SignUpViewDelegate {
     }
 }
 
-extension SignUpViewController: SignUpViewControllerProtocol {
+extension SignUpViewController: AuthViewControllerProtocol {
     func showSignUpErrorAlert(with message: String) {
         let alert = UIAlertController(title: "Что-то пошло не так...",
                                       message: message,

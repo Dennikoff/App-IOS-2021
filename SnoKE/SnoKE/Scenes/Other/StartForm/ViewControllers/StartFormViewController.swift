@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 final class StartFormViewController: UIViewController {
     
@@ -37,14 +38,19 @@ final class StartFormViewController: UIViewController {
 
 extension StartFormViewController: StartFormViewDelegate {
     func enterButtonTapped(numberPerDay: String, packPrice: String, numberInPack: String) {
-        UserDefaults.standard.set(numberPerDay, forKey: "com.SnoKEapp.SnoKE.numberPerDay")
-        UserDefaults.standard.set(packPrice, forKey: "com.SnoKEapp.SnoKE.packPrice")
-        UserDefaults.standard.set(numberInPack, forKey: "com.SnoKEapp.SnoKE.numberInPack")
+        guard let currentUser = Auth.auth().currentUser else {
+            return
+        }
+        let currentUserID = currentUser.uid
+        
+        UserDefaults.standard.set(numberPerDay, forKey: "com.SnoKEapp.SnoKE.numberPerDay.\(currentUserID)")
+        UserDefaults.standard.set(packPrice, forKey: "com.SnoKEapp.SnoKE.packPrice.\(currentUserID)")
+        UserDefaults.standard.set(numberInPack, forKey: "com.SnoKEapp.SnoKE.numberInPack.\(currentUserID)")
         
         let df = DateFormatter()
         df.dateFormat = "dd-MM-YYYY"
         let finishSmokingDateStr = df.string(from: Date())
-        UserDefaults.standard.setValue(finishSmokingDateStr, forKey: "com.SnoKEapp.SnoKE.finishSmokingDate")
+        UserDefaults.standard.setValue(finishSmokingDateStr, forKey: "com.SnoKEapp.SnoKE.finishSmokingDate.\(currentUserID)")
 
         presenter?.showStartCongratulationsScreen(self)
     }

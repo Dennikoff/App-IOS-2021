@@ -9,13 +9,13 @@ import UIKit
 
 
 protocol SignUpPresenterProtocol {
-    func signUpUser<T: UIViewController & SignUpViewControllerProtocol>(_ vc: T, email: String, password: String)
+    func signUpUser<T: UIViewController & AuthViewControllerProtocol>(_ vc: T, email: String, password: String)
     func showSignInScreen(_ vc: UIViewController)
 }
 
 final class SignUpPresenter: SignUpPresenterProtocol {
     
-    func signUpUser<T: UIViewController & SignUpViewControllerProtocol>(_ vc: T, email: String, password: String) {
+    func signUpUser<T: UIViewController & AuthViewControllerProtocol>(_ vc: T, email: String, password: String) {
         AuthManager.shared.signUpUser(vc, email: email, password: password) {
             let startFormVC = StartFormViewController(presenter: StartFormPresenter())
             startFormVC.modalPresentationStyle = .fullScreen
