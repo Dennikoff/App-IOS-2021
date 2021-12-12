@@ -7,12 +7,31 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
+
+enum FirestoreCollection: String {
+    case users
+}
+
+enum UserInfo: String {
+    case id
+    case email
+    case sigarettesPerDay
+    case sigarettesInPacket
+    case packPrice
+}
+
+protocol AuthManagerProtocol {
+    func signUpUser(_ vc: AuthViewControllerProtocol, email: String, password: String, completion: @escaping () -> Void)
+}
 
 final class AuthManager {
     
     static let shared = AuthManager()
     
-    var userID: String?
+    private let database = Firestore.firestore()
+    
+//    var userID: String?
     
     private init() {
         
@@ -51,7 +70,16 @@ final class AuthManager {
                 guard let id = Auth.auth().currentUser else {
                     return
                 }
-                self.userID = id.uid
+//                self.userID = id.uid
+                guard let result = authResult else {
+                    return
+                    // TODO: make error completion
+                }
+                self.database
+                    .collection(FirestoreCollection.users.rawValue)
+                    .document(result.user.uid)
+                    .setData([UserInfo.email.rawValue : email,
+                              UserInfo.id.rawValue : email])
                 completion()
             }
         }

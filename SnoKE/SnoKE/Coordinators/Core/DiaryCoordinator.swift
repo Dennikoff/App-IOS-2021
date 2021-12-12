@@ -11,7 +11,7 @@ import UIKit
 final class DiaryCoordinator: CoreCoordinator {
     
     override func start() {
-        let diaryVC = AchievementsViewController()
+        let diaryVC = DiaryViewController()
         configure(self, with: diaryVC)
         navigationController.pushViewController(diaryVC, animated: false)
     }

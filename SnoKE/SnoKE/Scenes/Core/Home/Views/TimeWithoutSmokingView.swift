@@ -8,6 +8,30 @@
 import UIKit
 import EasyPeasy
 
+
+struct TimeWithoutSmokingModel {
+    struct Days {
+        let firstDigit: Int
+        let secondDigit: Int
+    }
+    
+    struct Hours {
+        let firstDigit: Int
+        let secondDigit: Int
+    }
+    
+    struct Minutes {
+        let firstDigit: Int
+        let secondDigit: Int
+    }
+    
+    let days: Days
+    let hours: Hours
+    let minutes: Minutes
+}
+
+
+
 final class TimeWithoutSmokingView: UIView {
     private let firstTimeElement = TimeElementView()
     

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		662A8F0B2746C0BD000BE714 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662A8F0A2746C0BD000BE714 /* HomeService.swift */; };
+		6649CA4C2766978D0092A0A0 /* DiaryToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649CA4B2766978D0092A0A0 /* DiaryToggleView.swift */; };
+		6649CA4E2766986C0092A0A0 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649CA4D2766986C0092A0A0 /* DiaryViewController.swift */; };
+		6649CA50276699670092A0A0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649CA4F276699670092A0A0 /* UIViewController.swift */; };
+		6649CA5227669C7F0092A0A0 /* AchievementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6649CA5127669C7F0092A0A0 /* AchievementTableViewCell.swift */; };
 		6663529027219C720084BBA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6663528F27219C720084BBA3 /* AppDelegate.swift */; };
 		6663529227219C720084BBA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6663529127219C720084BBA3 /* SceneDelegate.swift */; };
 		6663529927219C730084BBA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6663529827219C730084BBA3 /* Assets.xcassets */; };
@@ -47,6 +52,7 @@
 		66C0E5F9272B4E040009E454 /* CoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0E5F8272B4E040009E454 /* CoreCoordinator.swift */; };
 		66C0E60F272B549E0009E454 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0E60E272B549E0009E454 /* HomePresenter.swift */; };
 		66D2FDD2273F31950017CB4D /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D2FDD1273F31950017CB4D /* SignUpPresenter.swift */; };
+		66E749D12752249000544988 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E749D02752249000544988 /* Date.swift */; };
 		7738BE1E27301B7900FA15A2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738BE1D27301B7900FA15A2 /* SignUpView.swift */; };
 		7738BE2B27301E5800FA15A2 /* ViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738BE2A27301E5800FA15A2 /* ViewPreview.swift */; };
 		7738BE2E27301E7000FA15A2 /* ViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7738BE2D27301E7000FA15A2 /* ViewControllerPreview.swift */; };
@@ -61,6 +67,11 @@
 /* Begin PBXFileReference section */
 		042BEC0FB1D6F682D69AC4E7 /* Pods-SnoKE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnoKE.release.xcconfig"; path = "Target Support Files/Pods-SnoKE/Pods-SnoKE.release.xcconfig"; sourceTree = "<group>"; };
 		627DE2AF682AAC7533D12F01 /* Pods-SnoKE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnoKE.debug.xcconfig"; path = "Target Support Files/Pods-SnoKE/Pods-SnoKE.debug.xcconfig"; sourceTree = "<group>"; };
+		662A8F0A2746C0BD000BE714 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		6649CA4B2766978D0092A0A0 /* DiaryToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryToggleView.swift; sourceTree = "<group>"; };
+		6649CA4D2766986C0092A0A0 /* DiaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
+		6649CA4F276699670092A0A0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		6649CA5127669C7F0092A0A0 /* AchievementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementTableViewCell.swift; sourceTree = "<group>"; };
 		6663528C27219C720084BBA3 /* SnoKE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnoKE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6663528F27219C720084BBA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6663529127219C720084BBA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +113,7 @@
 		66C0E5F8272B4E040009E454 /* CoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreCoordinator.swift; sourceTree = "<group>"; };
 		66C0E60E272B549E0009E454 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		66D2FDD1273F31950017CB4D /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
+		66E749D02752249000544988 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		73CB1946FA81311EBA100CD0 /* Pods_SnoKE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnoKE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7738BE1D27301B7900FA15A2 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		7738BE2A27301E5800FA15A2 /* ViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPreview.swift; sourceTree = "<group>"; };
@@ -323,6 +335,8 @@
 				666352C727219DE30084BBA3 /* Extensions.swift */,
 				66B1DDA927442BA400BD0A15 /* UITextField.swift */,
 				66B1DDAB27442D6500BD0A15 /* UIColor.swift */,
+				66E749D02752249000544988 /* Date.swift */,
+				6649CA4F276699670092A0A0 /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -403,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				666352D32721E7DF0084BBA3 /* SecondaryTrackerModel.swift */,
+				662A8F0A2746C0BD000BE714 /* HomeService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -432,6 +447,7 @@
 		66C0E5FA272B520B0009E454 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6649CA5127669C7F0092A0A0 /* AchievementTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -455,6 +471,8 @@
 			children = (
 				666352AF27219D8C0084BBA3 /* AchievementsViewController.swift */,
 				666352B027219D8C0084BBA3 /* EmotionsDiaryViewController.swift */,
+				6649CA4B2766978D0092A0A0 /* DiaryToggleView.swift */,
+				6649CA4D2766986C0092A0A0 /* DiaryViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -735,10 +753,15 @@
 				6698CA2C272EEAA8006B9B17 /* HomeView.swift in Sources */,
 				66B1DDC22744673600BD0A15 /* StartCongratulationsPresenter.swift in Sources */,
 				66D2FDD2273F31950017CB4D /* SignUpPresenter.swift in Sources */,
+				66E749D12752249000544988 /* Date.swift in Sources */,
 				66C0E60F272B549E0009E454 /* HomePresenter.swift in Sources */,
+				662A8F0B2746C0BD000BE714 /* HomeService.swift in Sources */,
 				66B1DDAC27442D6500BD0A15 /* UIColor.swift in Sources */,
 				66C0E5F9272B4E040009E454 /* CoreCoordinator.swift in Sources */,
+				6649CA50276699670092A0A0 /* UIViewController.swift in Sources */,
+				6649CA4E2766986C0092A0A0 /* DiaryViewController.swift in Sources */,
 				9E2297F327444D85004F4D14 /* SignInPresenter.swift in Sources */,
+				6649CA5227669C7F0092A0A0 /* AchievementTableViewCell.swift in Sources */,
 				666352D42721E7DF0084BBA3 /* SecondaryTrackerModel.swift in Sources */,
 				666352C427219DB60084BBA3 /* AuthManager.swift in Sources */,
 				66C0E5F0272B42FD0009E454 /* ChildCoordinatorProtocol.swift in Sources */,
@@ -746,6 +769,7 @@
 				6698CA27272DBFB0006B9B17 /* ViewController.swift in Sources */,
 				66C0E5EE272B42ED0009E454 /* MainCoordinatorProtocol.swift in Sources */,
 				66C0E5E1272B2DB10009E454 /* AppCorrdinator.swift in Sources */,
+				6649CA4C2766978D0092A0A0 /* DiaryToggleView.swift in Sources */,
 				666352CE2721AED40084BBA3 /* SecondaryTrackerView.swift in Sources */,
 				66B1DDC027445E5800BD0A15 /* StartCongratulationsViewController.swift in Sources */,
 				7738BE2B27301E5800FA15A2 /* ViewPreview.swift in Sources */,
