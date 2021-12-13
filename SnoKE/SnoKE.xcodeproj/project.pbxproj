@@ -33,7 +33,7 @@
 		6698CA20272DA568006B9B17 /* LastAchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6698CA1F272DA568006B9B17 /* LastAchievementView.swift */; };
 		6698CA22272DB7F6006B9B17 /* UserWantsToSmokeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6698CA21272DB7F6006B9B17 /* UserWantsToSmokeButton.swift */; };
 		6698CA24272DBB36006B9B17 /* UserSmokedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6698CA23272DBB36006B9B17 /* UserSmokedView.swift */; };
-		6698CA27272DBFB0006B9B17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6698CA26272DBFB0006B9B17 /* ViewController.swift */; };
+		6698CA27272DBFB0006B9B17 /* UserWantsToSmokeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6698CA26272DBFB0006B9B17 /* UserWantsToSmokeController.swift */; };
 		6698CA2A272DC162006B9B17 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6698CA29272DC162006B9B17 /* ViewController2.swift */; };
 		6698CA2C272EEAA8006B9B17 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6698CA2B272EEAA8006B9B17 /* HomeView.swift */; };
 		66B1DDAA27442BA400BD0A15 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1DDA927442BA400BD0A15 /* UITextField.swift */; };
@@ -94,7 +94,7 @@
 		6698CA1F272DA568006B9B17 /* LastAchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastAchievementView.swift; sourceTree = "<group>"; };
 		6698CA21272DB7F6006B9B17 /* UserWantsToSmokeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWantsToSmokeButton.swift; sourceTree = "<group>"; };
 		6698CA23272DBB36006B9B17 /* UserSmokedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSmokedView.swift; sourceTree = "<group>"; };
-		6698CA26272DBFB0006B9B17 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6698CA26272DBFB0006B9B17 /* UserWantsToSmokeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWantsToSmokeController.swift; sourceTree = "<group>"; };
 		6698CA29272DC162006B9B17 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		6698CA2B272EEAA8006B9B17 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		66B1DDA927442BA400BD0A15 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 		6698CA25272DBF86006B9B17 /* UserWantsToSmoke */ = {
 			isa = PBXGroup;
 			children = (
-				6698CA26272DBFB0006B9B17 /* ViewController.swift */,
+				6698CA26272DBFB0006B9B17 /* UserWantsToSmokeController.swift */,
 			);
 			path = UserWantsToSmoke;
 			sourceTree = "<group>";
@@ -766,7 +766,7 @@
 				666352C427219DB60084BBA3 /* AuthManager.swift in Sources */,
 				66C0E5F0272B42FD0009E454 /* ChildCoordinatorProtocol.swift in Sources */,
 				66B1DDBE27445E3F00BD0A15 /* StartCongratulationsView.swift in Sources */,
-				6698CA27272DBFB0006B9B17 /* ViewController.swift in Sources */,
+				6698CA27272DBFB0006B9B17 /* UserWantsToSmokeController.swift in Sources */,
 				66C0E5EE272B42ED0009E454 /* MainCoordinatorProtocol.swift in Sources */,
 				66C0E5E1272B2DB10009E454 /* AppCorrdinator.swift in Sources */,
 				6649CA4C2766978D0092A0A0 /* DiaryToggleView.swift in Sources */,

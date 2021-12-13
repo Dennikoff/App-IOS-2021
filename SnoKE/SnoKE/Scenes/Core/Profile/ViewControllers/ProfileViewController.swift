@@ -6,30 +6,126 @@
 //
 
 import UIKit
+import FirebaseAuth
+
+
+struct Section {
+    let title: String
+    let options: [Option]
+}
+
+struct Option {
+    let title: String
+    let handler: () -> Void
+}
+
+
 
 class ProfileViewController: UIViewController {
-    
-    private let logoutButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Выйти из аккаунта", for: .normal)
-        button.layer.cornerRadius = 12
-        button.backgroundColor = .red
-        button.titleLabel?.textColor = .white
-        return button
+    // MARK: - Properties
+    private let tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        return tableView
     }()
-
+    
+    private var sections: [Section] = []
+    
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
-        
-        view.addSubview(logoutButton)
-        logoutButton.frame = CGRect(x: view.width/4, y: view.height/2, width: 250, height: 60)
-        logoutButton.addTarget(self, action: #selector(didTappedLogoutButton), for: .touchUpInside)
+        configureModels()
+        title = "Settings"
+        view.backgroundColor = .systemBackground
+        view.addSubview(tableView)
+        tableView.dataSource = self
+        tableView.delegate = self
     }
-
-    @objc private func didTappedLogoutButton() {
-        AuthManager.shared.logout() {
-            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.setRootViewController(to: .signUpState)
+    
+    
+    // MARK: - Layout
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
+    }
+    
+    
+    // MARK: - Methods
+    private func configureModels() {
+        sections.append(Section(title: "Профиль", options: [Option(title: "Посмотреть свой профиль", handler: { [weak self] in
+            DispatchQueue.main.async {
+                self?.viewProfile()
+            }
+        })]))
+        
+        sections.append(Section(title: "Аккаунт", options: [Option(title: "Выйти", handler: {
+            DispatchQueue.main.async {
+                AuthManager.shared.logout() {
+                    (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.setRootViewController(to: .signUpState)
+                }
+            }
+        })]))
+    }
+    
+    
+    private func viewProfile() {
+        guard let user = Auth.auth().currentUser,
+              let finishSmokingDate = UserDefaults.standard.object(forKey: "com.SnoKEapp.SnoKE.finishSmokingDate.\(user.uid)") as? Date else {
+            return
         }
+        let finishSmokingString = finishSmokingDate.getFormattedDate(format: "dd/MM/yyyy")
+        
+        guard let numPerDay = UserDefaults.standard.string(forKey: "com.SnoKEapp.SnoKE.numberPerDay.\(user.uid)"),
+              let packPrice =  UserDefaults.standard.string(forKey: "com.SnoKEapp.SnoKE.packPrice.\(user.uid)"),
+              let numberInPack = UserDefaults.standard.string(forKey: "com.SnoKEapp.SnoKE.numberInPack.\(user.uid)")
+        else {
+            return
+        }
+        
+        let alert = UIAlertController(title: "Информация об аккаунте",
+                                      message: "Cигарет в день: \(numPerDay)\nСтоимость пачки: \(packPrice)\nКол-во в пачке: \(numberInPack)\n\nЗакончил курить: \(finishSmokingString)",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+}
+
+
+// MARK: - Delegate and DataSource
+extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    // DataSource
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sections[section].options.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = sections[indexPath.section].options[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = model.title
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let model = sections[section]
+        return model.title
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    // Delegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let model = sections[indexPath.section].options[indexPath.row]
+        model.handler()
     }
 }
+
