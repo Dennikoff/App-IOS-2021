@@ -8,7 +8,7 @@
 import SwiftUI
 import EasyPeasy
 
-class AchievementsViewController: UIViewController {
+class EmotionsDiaryViewController: UIViewController {
     
     
     override func viewDidLoad() {

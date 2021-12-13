@@ -13,8 +13,8 @@
 		6663529227219C720084BBA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6663529127219C720084BBA3 /* SceneDelegate.swift */; };
 		6663529927219C730084BBA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6663529827219C730084BBA3 /* Assets.xcassets */; };
 		6663529C27219C730084BBA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6663529A27219C730084BBA3 /* LaunchScreen.storyboard */; };
-		666352B727219D8C0084BBA3 /* AchievementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666352AF27219D8C0084BBA3 /* AchievementsViewController.swift */; };
-		666352B827219D8C0084BBA3 /* EmotionsDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666352B027219D8C0084BBA3 /* EmotionsDiaryViewController.swift */; };
+		666352B727219D8C0084BBA3 /* EmotionsDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666352AF27219D8C0084BBA3 /* EmotionsDiaryViewController.swift */; };
+		666352B827219D8C0084BBA3 /* AchievementsDiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666352B027219D8C0084BBA3 /* AchievementsDiaryViewController.swift */; };
 		666352B927219D8C0084BBA3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666352B127219D8C0084BBA3 /* HomeViewController.swift */; };
 		666352BB27219D8C0084BBA3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666352B327219D8C0084BBA3 /* ProfileViewController.swift */; };
 		666352BC27219D8C0084BBA3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666352B527219D8C0084BBA3 /* SignUpViewController.swift */; };
@@ -71,8 +71,8 @@
 		6663529827219C730084BBA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6663529B27219C730084BBA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6663529D27219C730084BBA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		666352AF27219D8C0084BBA3 /* AchievementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementsViewController.swift; sourceTree = "<group>"; };
-		666352B027219D8C0084BBA3 /* EmotionsDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotionsDiaryViewController.swift; sourceTree = "<group>"; };
+		666352AF27219D8C0084BBA3 /* EmotionsDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmotionsDiaryViewController.swift; path = ../MoodControl/EmotionsDiaryViewController.swift; sourceTree = "<group>"; };
+		666352B027219D8C0084BBA3 /* AchievementsDiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementsDiaryViewController.swift; sourceTree = "<group>"; };
 		666352B127219D8C0084BBA3 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		666352B327219D8C0084BBA3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		666352B527219D8C0084BBA3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -151,7 +151,6 @@
 			isa = PBXGroup;
 			children = (
 				606011252746DEF80093E40A /* EmotionDiaryView.swift */,
-				666352AF27219D8C0084BBA3 /* AchievementsViewController.swift */,
 				602E3236274D4A54004C80E8 /* EmojiView.swift */,
 			);
 			path = MoodControl;
@@ -444,7 +443,8 @@
 		66C0E5FD272B521F0009E454 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				666352B027219D8C0084BBA3 /* EmotionsDiaryViewController.swift */,
+				666352AF27219D8C0084BBA3 /* EmotionsDiaryViewController.swift */,
+				666352B027219D8C0084BBA3 /* AchievementsDiaryViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -705,7 +705,7 @@
 				6698CA24272DBB36006B9B17 /* UserSmokedView.swift in Sources */,
 				666352B927219D8C0084BBA3 /* HomeViewController.swift in Sources */,
 				66C0E5EB272B3BC50009E454 /* ProfileCoordinator.swift in Sources */,
-				666352B727219D8C0084BBA3 /* AchievementsViewController.swift in Sources */,
+				666352B727219D8C0084BBA3 /* EmotionsDiaryViewController.swift in Sources */,
 				666352BC27219D8C0084BBA3 /* SignUpViewController.swift in Sources */,
 				6698CA2A272DC162006B9B17 /* ViewController2.swift in Sources */,
 				66B1DDB827445BFF00BD0A15 /* StartFormPresenter.swift in Sources */,
@@ -714,7 +714,7 @@
 				7738BE2E27301E7000FA15A2 /* ViewControllerPreview.swift in Sources */,
 				66C0E5E9272B3BBE0009E454 /* DiaryCoordinator.swift in Sources */,
 				66C0E5F7272B46650009E454 /* CoreCoordinatorsConfigurationProtocol.swift in Sources */,
-				666352B827219D8C0084BBA3 /* EmotionsDiaryViewController.swift in Sources */,
+				666352B827219D8C0084BBA3 /* AchievementsDiaryViewController.swift in Sources */,
 				6698CA20272DA568006B9B17 /* LastAchievementView.swift in Sources */,
 				666352BD27219D8C0084BBA3 /* SignInViewController.swift in Sources */,
 				9EABEF93274117F200E960D6 /* StartFormViewController.swift in Sources */,

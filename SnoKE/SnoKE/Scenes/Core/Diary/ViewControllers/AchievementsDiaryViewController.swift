@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EmotionsDiaryViewController: UIViewController {
+class AchievementsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
