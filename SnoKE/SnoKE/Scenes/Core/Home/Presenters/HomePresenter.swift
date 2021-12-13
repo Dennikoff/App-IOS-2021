@@ -34,7 +34,7 @@ extension HomePresenter: HomePresenterProtocol {
     }
     
     func userWantsToSmokeButtonTapped() {
-        let vc = ViewController()
+        let vc = UserWantsToSmokeViewController()
         coordinator?.modalPresentation(of: vc)
     }
     
