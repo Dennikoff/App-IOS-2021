@@ -10,6 +10,9 @@ import FirebaseAuth
 
 protocol HomeServiceProtocol {
     func getCurrentTimeWithoutSmoking() -> TimeWithoutSmokingModel
+    func getDaysWithoutCigarettes() -> Int?
+    func getMinutesOverDaysWithoutSmoking() -> Int?
+    func getHoursWithoutSmoking() -> Int?
 }
 
 
@@ -55,4 +58,53 @@ final class HomeService: HomeServiceProtocol {
         
         return model
     }
+    
+    func getDaysWithoutCigarettes() -> Int? {
+        guard let user = Auth.auth().currentUser, let finishSmokingDate = UserDefaults.standard.object(forKey: "com.SnoKEapp.SnoKE.finishSmokingDate.\(user.uid)") as? Date else {
+            return nil
+        }
+        let currentDate = Date()
+        let period = currentDate - finishSmokingDate
+        print("[DEBUG] Current Date: \(currentDate)")
+        print("[DEBUG] Finish Date: \(finishSmokingDate)")
+        let daysAmount = (period / 86400)
+        let daysAmountRounded = daysAmount.rounded(.towardZero)
+        
+        return Int(daysAmountRounded)
+    }
+    
+    func getMinutesOverDaysWithoutSmoking() -> Int? {
+        guard let user = Auth.auth().currentUser, let finishSmokingDate = UserDefaults.standard.object(forKey: "com.SnoKEapp.SnoKE.finishSmokingDate.\(user.uid)") as? Date else {
+            return nil
+        }
+        let currentDate = Date()
+        let period = currentDate - finishSmokingDate
+        print("[DEBUG] Current Date: \(currentDate)")
+        print("[DEBUG] Finish Date: \(finishSmokingDate)")
+        let daysAmount = (period / 86400)
+        let daysAmountRounded = daysAmount.rounded(.towardZero)
+        let hoursAmount = (period - daysAmountRounded*86400) / 3600
+        let hoursAmountRounded = hoursAmount.rounded(.towardZero)
+        let minutesAmount = (period - daysAmountRounded*86400 - hoursAmountRounded*3600) / 60
+        let minutesAmountRounded = minutesAmount.rounded(.towardZero)
+        
+        return Int(minutesAmountRounded)
+    }
+    
+    func getHoursWithoutSmoking() -> Int? {
+        guard let user = Auth.auth().currentUser, let finishSmokingDate = UserDefaults.standard.object(forKey: "com.SnoKEapp.SnoKE.finishSmokingDate.\(user.uid)") as? Date else {
+            return nil
+        }
+        let currentDate = Date()
+        let period = currentDate - finishSmokingDate
+        print("[DEBUG] Current Date: \(currentDate)")
+        print("[DEBUG] Finish Date: \(finishSmokingDate)")
+        let daysAmount = (period / 86400)
+        let daysAmountRounded = daysAmount.rounded(.towardZero)
+        let hoursAmount = (period - daysAmountRounded*86400) / 3600
+        let hoursAmountRounded = hoursAmount.rounded(.towardZero)
+        
+        return Int(hoursAmountRounded)
+    }
+    
 }

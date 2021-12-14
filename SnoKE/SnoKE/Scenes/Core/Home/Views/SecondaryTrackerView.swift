@@ -48,14 +48,14 @@ final class SecondaryTrackerView: UIView {
         setLayout()
     }
     
-    func configure(with viewModel: SecondaryTrackerModel) {
-        switch viewModel.type {
+    func configure(with model: SecondaryTrackerModel) {
+        switch model.type {
         case .savedMoney:
-            self.textLabel.text = "+ " + String(viewModel.number) + " RUB"
+            self.textLabel.text = "+ " + String(model.number) + " RUB"
         case .brokenCigarettes:
-            self.textLabel.text = "- " + String(viewModel.number) + " шт"
+            self.textLabel.text = "- " + String(model.number) + " шт"
         }
-        self.iconView.image = UIImage(named: viewModel.type.icon)
+        self.iconView.image = UIImage(named: model.type.icon)
     }
     
     private func setLayout() {

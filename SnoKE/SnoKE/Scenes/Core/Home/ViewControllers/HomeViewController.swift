@@ -17,8 +17,6 @@ class HomeViewController: UIViewController {
     private let mainView = HomeView()
     
     private var model: TimeWithoutSmokingModel
-    let model1 = SecondaryTrackerModel(type: .savedMoney, number: 322)
-    let model2 = SecondaryTrackerModel(type: .brokenCigarettes, number: 322)
     
     private var timer: Timer = Timer()
     
@@ -61,8 +59,8 @@ class HomeViewController: UIViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        mainView.savedMoneyView.configure(with: model1)
-        mainView.brokenCigarettesView.configure(with: model2)
+        mainView.savedMoneyView.configure(with: SecondaryTrackerModel.init(type: .savedMoney))
+        mainView.brokenCigarettesView.configure(with: SecondaryTrackerModel.init(type: .brokenCigarettes))
         let modelDays = model.days
         let hoursModel = model.hours
         let minModel = model.minutes

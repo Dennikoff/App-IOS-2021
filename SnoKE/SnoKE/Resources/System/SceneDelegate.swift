@@ -23,6 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         if AuthManager.shared.isUserLoggedIn() {
+           
+            AuthManager.shared.updateUserDefaultsForUser()
+            
+           
+            
             let homeCoordinator = HomeCoordinator(navigationController: UINavigationController(), imageName: "house.fill", title: "SnoKE", tabBarItemTag: 1)
             let diaryCoordinator = DiaryCoordinator(navigationController: UINavigationController(), imageName: "book.closed.fill", title: "Дневник", tabBarItemTag: 2)
             let profileCoordinator = ProfileCoordinator(navigationController: UINavigationController(), imageName: "figure.wave", title: "Профиль", tabBarItemTag: 3)

@@ -44,14 +44,15 @@ extension StartFormViewController: StartFormViewDelegate {
         let currentUserID = currentUser.uid
         
         // TODO: сделать не форс анрап
-        AuthManager.shared.fillAdditionalUserInfo(to: currentUser, sigarettesPerDay: Int(numberPerDay)!, sigarettesInPacket: Int(numberInPack)!, packPrice: Int(packPrice)!)
+        AuthManager.shared.fillAdditionalUserInfo(to: currentUser, cigarettesPerDay: Int(numberPerDay)!, cigarettesInPack: Int(numberInPack)!, packPrice: Int(packPrice)!)
         
         UserDefaults.standard.set(numberPerDay, forKey: "com.SnoKEapp.SnoKE.numberPerDay.\(currentUserID)")
         UserDefaults.standard.set(packPrice, forKey: "com.SnoKEapp.SnoKE.packPrice.\(currentUserID)")
         UserDefaults.standard.set(numberInPack, forKey: "com.SnoKEapp.SnoKE.numberInPack.\(currentUserID)")
         
         let df = DateFormatter()
-        df.dateFormat = "dd-MM-YYYY"
+        df.dateFormat = "dd-MM-yyyy"
+        df.locale = Locale(identifier: "ru_RU")
         let finishSmokingDate = Date()
         UserDefaults.standard.setValue(finishSmokingDate, forKey: "com.SnoKEapp.SnoKE.finishSmokingDate.\(currentUserID)")
 

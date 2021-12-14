@@ -16,10 +16,46 @@ enum FirestoreCollection: String {
 enum UserInfo: String {
     case id
     case email
-    case sigarettesPerDay
-    case sigarettesInPacket
+    case cigarettesPerDay
+    case cigarettesInPack
     case packPrice
     case finishSmokingDate
+}
+
+struct AppUser {
+    let id: String
+    let email: String
+    let numberPerDay: String
+    let numberInPack: String
+    let packPrice: String
+    let finishSmokingDate: String
+    
+    init(data: [String:Any]) {
+        self.id = data["id"] as? String ?? ""
+        self.email = data["email"] as? String ?? ""
+        self.numberPerDay = data["numberPerDay"] as? String ?? ""
+        self.numberInPack = data["numberInPack"] as? String ?? ""
+        self.packPrice = data["packPrice"] as? String ?? ""
+        self.finishSmokingDate = data["finishSmokingDate"] as? String ?? ""
+    }
+    
+    
+    func setUserDefaultFields() {
+        
+        UserDefaults.standard.set(email, forKey: "com.SnoKEapp.SnoKE.email.\(id)")
+        UserDefaults.standard.set(numberPerDay, forKey: "com.SnoKEapp.SnoKE.numberPerDay.\(id)")
+        UserDefaults.standard.set(numberInPack, forKey: "com.SnoKEapp.SnoKE.numberInPack.\(id)")
+        UserDefaults.standard.set(packPrice, forKey: "com.SnoKEapp.SnoKE.packPrice.\(id)")
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        let date = dateFormatter.date(from: finishSmokingDate)!
+        print(date)
+        print(Date())
+        UserDefaults.standard.setValue(date, forKey: "com.SnoKEapp.SnoKE.finishSmokingDate.\(id)")
+        
+    }
 }
 
 final class AuthManager {
@@ -28,6 +64,7 @@ final class AuthManager {
     
     private let database = Firestore.firestore()
     
+    var currentUserID: String = ""
     
     private init() {
         
@@ -63,7 +100,7 @@ final class AuthManager {
                 }
             } else {
                 print("✅🐣✅ User signs up successfully")
-
+                
                 guard let result = authResult else {
                     return
                     // TODO: make error completion
@@ -71,24 +108,25 @@ final class AuthManager {
                 guard let id = Auth.auth().currentUser?.uid else {
                     return
                 }
+                self.currentUserID = id
                 self.database
                     .collection(FirestoreCollection.users.rawValue)
                     .document(result.user.uid)
                     .setData([UserInfo.email.rawValue : email,
                               UserInfo.id.rawValue : id])
                 completion()
-
+                
             }
         }
     }
     
-    func fillAdditionalUserInfo(to user: User, sigarettesPerDay: Int, sigarettesInPacket: Int, packPrice: Int) {
+    func fillAdditionalUserInfo(to user: User, cigarettesPerDay: Int, cigarettesInPack: Int, packPrice: Int) {
         self.database
             .collection(FirestoreCollection.users.rawValue)
             .document(user.uid)
-            .updateData([UserInfo.sigarettesPerDay.rawValue : sigarettesPerDay,
-                      UserInfo.sigarettesInPacket.rawValue : sigarettesInPacket,
-                      UserInfo.packPrice.rawValue : packPrice])
+            .updateData([UserInfo.cigarettesPerDay.rawValue : cigarettesPerDay,
+                         UserInfo.cigarettesInPack.rawValue : cigarettesInPack,
+                         UserInfo.packPrice.rawValue : packPrice])
     }
     
     func addFinishSmokingDateToUserStorage(user: User, finishDate: String) {
@@ -125,6 +163,7 @@ final class AuthManager {
                 }
             } else {
                 print("User signs in successfully")
+                self.updateUserDefaultsForUser()
                 (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.setRootViewController(to: .mainState)
             }
         }
@@ -147,5 +186,39 @@ final class AuthManager {
             print("❌ [DEBUG] Sign out error")
         }
     }
+    
+    func updateUserDefaultsForUser() {
+        guard let id = Auth.auth().currentUser?.uid else {
+            print("[DEBUG] got something wrong in updating UserDefaults")
+            return
+        }
+        currentUserID = id
+        let docRef = database.collection(FirestoreCollection.users.rawValue).document(currentUserID)
+        
+        let coolQueue = DispatchQueue(label: "coolQueue", qos: .userInteractive)
+
+        
+        docRef.getDocument { (document, error) in
+            print("[DEBUG] getDOC, \(Thread.isMainThread)")
+            if let document = document, document.exists {
+                let dataDescription = document.data()
+                guard let dataDescription = dataDescription else {
+                    return
+                }
+                let userInfo = AppUser(data: dataDescription)
+                userInfo.setUserDefaultFields()
+                print("Document data: \(String(describing: dataDescription))")
+                
+            } else {
+                print("Document does not exist")
+            }
+            
+        }
+        
+        
+        
+        
+    }
+    
 }
 

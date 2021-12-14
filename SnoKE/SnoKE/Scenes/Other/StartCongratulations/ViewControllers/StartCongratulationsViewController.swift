@@ -43,6 +43,7 @@ final class StartCongratulationsViewController: UIViewController {
         }
         let df = DateFormatter()
         df.dateFormat = "dd-MM-yyyy"
+        df.locale = Locale(identifier: "ru_RU")
         let finishSmokingDateStr = df.string(from: finishSmokingDate)
         AuthManager.shared.addFinishSmokingDateToUserStorage(user: currentUser, finishDate: finishSmokingDateStr)
     }
