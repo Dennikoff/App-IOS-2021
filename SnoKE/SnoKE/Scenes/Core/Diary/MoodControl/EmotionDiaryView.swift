@@ -156,9 +156,9 @@ final class EmotionDiaryView: UIView {
         addSubview(welcomeLabel)
         welcomeLabel.easy.layout(
             Left(16),
-            Height(41),
+            Height(30),
             Width(210),
-            Top((UIApplication.shared.windows.first?.safeAreaInsets.top ?? .zero) + 45)
+            Top(0)
         )
         
         addSubview(stackView)
@@ -166,7 +166,7 @@ final class EmotionDiaryView: UIView {
             Left(16),
             Height(110),
             Width(345),
-            Top(16).to(welcomeLabel)
+            Top(0).to(welcomeLabel)
         )
         
         addSubview(notes)
