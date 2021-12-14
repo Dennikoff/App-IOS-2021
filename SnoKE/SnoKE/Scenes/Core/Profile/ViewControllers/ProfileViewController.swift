@@ -72,8 +72,10 @@ class ProfileViewController: UIViewController {
     
     
     private func viewProfile() {
+        // TODO: добавить в юзер дефолтс дату всю инфу после входа в приложение(надо хранить на бэке эту чушь)
         guard let user = Auth.auth().currentUser,
               let finishSmokingDate = UserDefaults.standard.object(forKey: "com.SnoKEapp.SnoKE.finishSmokingDate.\(user.uid)") as? Date else {
+                  print("[DEBUG] Got unwrap error with finishSmokingDate")
             return
         }
         let finishSmokingString = finishSmokingDate.getFormattedDate(format: "dd/MM/yyyy")
@@ -82,6 +84,7 @@ class ProfileViewController: UIViewController {
               let packPrice =  UserDefaults.standard.string(forKey: "com.SnoKEapp.SnoKE.packPrice.\(user.uid)"),
               let numberInPack = UserDefaults.standard.string(forKey: "com.SnoKEapp.SnoKE.numberInPack.\(user.uid)")
         else {
+            print("[DEBUG] Got unwrap error with numPerDay, packPrice, numberInPack")
             return
         }
         
