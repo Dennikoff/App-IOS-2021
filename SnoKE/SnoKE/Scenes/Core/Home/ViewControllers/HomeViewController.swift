@@ -7,6 +7,7 @@
 
 import SwiftUI
 import EasyPeasy
+import FirebaseAuth
 
 class HomeViewController: UIViewController {
 
@@ -43,7 +44,13 @@ class HomeViewController: UIViewController {
         
         mainView.savedMoneyView.configure(with: model)
         mainView.brokenCigarettesView.configure(with: model2)
-        mainView.timeWithoutSmokingView.configure(digits: (days: (0, 8), hours: (1, 7), minutes: (2, 3)))
+        let timeWithoutSmokingModel = HomeService.shared.getCurrentTimeWithoutSmoking()
+        let modelDays = timeWithoutSmokingModel.days
+        let hoursModel = timeWithoutSmokingModel.hours
+        let minModel = timeWithoutSmokingModel.minutes
+        mainView.timeWithoutSmokingView.configure(digits: (days: (modelDays.firstDigit, modelDays.secondDigit),
+                                                           hours: (hoursModel.firstDigit, hoursModel.secondDigit),
+                                                           minutes: (minModel.firstDigit, minModel.secondDigit)))
         mainView.moreAchievementsButton.addTarget(self, action: #selector(coolButtonTapped), for: .touchUpInside)
         mainView.userWantsToSmokeButton.addTarget(self,
                                                   action: #selector(userWantsToSmokeButtonTapped),

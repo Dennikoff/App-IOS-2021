@@ -7,6 +7,7 @@
 
 import UIKit
 import EasyPeasy
+import FirebaseAuth
 
 protocol StartCongratulationsViewDelegate: AnyObject {
     func startButtonTapped()
@@ -85,10 +86,13 @@ final class StartCongratulationsView: UIView {
     }
     
     func configure() {
-        guard let finishSmokingDateStr = UserDefaults.standard.string(forKey: "com.SnoKEapp.SnoKE.finishSmokingDate") else {
-            endSmokeDateLabel.text = "error :("
+        guard let currentUser = Auth.auth().currentUser, let finishSmokingDate = UserDefaults.standard.object(forKey: "com.SnoKEapp.SnoKE.finishSmokingDate.\(currentUser.uid)") as? Date else {
+            self.endSmokeDateLabel.text = "error :("
             return
         }
+        let df = DateFormatter()
+        df.dateFormat = "dd-MM-yyyy"
+        let finishSmokingDateStr = df.string(from: finishSmokingDate)
         endSmokeDateLabel.text = finishSmokingDateStr
     }
     

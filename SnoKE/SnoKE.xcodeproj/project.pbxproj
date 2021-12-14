@@ -39,6 +39,8 @@
 		6698CA27272DBFB0006B9B17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6698CA26272DBFB0006B9B17 /* ViewController.swift */; };
 		6698CA2A272DC162006B9B17 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6698CA29272DC162006B9B17 /* ViewController2.swift */; };
 		6698CA2C272EEAA8006B9B17 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6698CA2B272EEAA8006B9B17 /* HomeView.swift */; };
+		6699DF8227692F6100D9ADC8 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699DF8127692F6100D9ADC8 /* HomeService.swift */; };
+		6699DF842769304800D9ADC8 /* TimeWithoutSmokingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699DF832769304800D9ADC8 /* TimeWithoutSmokingModel.swift */; };
 		66B1DDAA27442BA400BD0A15 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1DDA927442BA400BD0A15 /* UITextField.swift */; };
 		66B1DDAC27442D6500BD0A15 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1DDAB27442D6500BD0A15 /* UIColor.swift */; };
 		66B1DDB827445BFF00BD0A15 /* StartFormPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B1DDB727445BFF00BD0A15 /* StartFormPresenter.swift */; };
@@ -102,6 +104,8 @@
 		6698CA26272DBFB0006B9B17 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6698CA29272DC162006B9B17 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		6698CA2B272EEAA8006B9B17 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		6699DF8127692F6100D9ADC8 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		6699DF832769304800D9ADC8 /* TimeWithoutSmokingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeWithoutSmokingModel.swift; sourceTree = "<group>"; };
 		66B1DDA927442BA400BD0A15 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		66B1DDAB27442D6500BD0A15 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		66B1DDB727445BFF00BD0A15 /* StartFormPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFormPresenter.swift; sourceTree = "<group>"; };
@@ -433,6 +437,8 @@
 			isa = PBXGroup;
 			children = (
 				666352D32721E7DF0084BBA3 /* SecondaryTrackerModel.swift */,
+				6699DF8127692F6100D9ADC8 /* HomeService.swift */,
+				6699DF832769304800D9ADC8 /* TimeWithoutSmokingModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -752,6 +758,7 @@
 				606011262746DEF80093E40A /* EmotionDiaryView.swift in Sources */,
 				667776322767CC9C00365EF4 /* AchievementsViewController.swift in Sources */,
 				666352CE2721AED40084BBA3 /* SecondaryTrackerView.swift in Sources */,
+				6699DF842769304800D9ADC8 /* TimeWithoutSmokingModel.swift in Sources */,
 				664FC33E2767D7F200D7BEAA /* AchievementTableViewCell.swift in Sources */,
 				665CFF4F2767D93E00E0C383 /* Date.swift in Sources */,
 				66B1DDC027445E5800BD0A15 /* StartCongratulationsViewController.swift in Sources */,
@@ -760,6 +767,7 @@
 				666352D92721F6DD0084BBA3 /* TimeElementView.swift in Sources */,
 				7738BE1E27301B7900FA15A2 /* SignUpView.swift in Sources */,
 				9EABEF962741183000E960D6 /* StartFormView.swift in Sources */,
+				6699DF8227692F6100D9ADC8 /* HomeService.swift in Sources */,
 				6663529227219C720084BBA3 /* SceneDelegate.swift in Sources */,
 				602E3237274D4A54004C80E8 /* EmojiView.swift in Sources */,
 				666352C627219DDB0084BBA3 /* Useful.swift in Sources */,

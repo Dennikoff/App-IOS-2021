@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 final class StartCongratulationsViewController: UIViewController {
     
@@ -30,8 +31,20 @@ final class StartCongratulationsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addDateToFirebase()
         startCongratulationsView.configure()
         startCongratulationsView.delegate = self
+    }
+    
+    func addDateToFirebase() {
+        guard let currentUser = Auth.auth().currentUser, let finishSmokingDate = UserDefaults.standard.object(forKey: "com.SnoKEapp.SnoKE.finishSmokingDate.\(currentUser.uid)") as? Date else {
+
+            return
+        }
+        let df = DateFormatter()
+        df.dateFormat = "dd-MM-yyyy"
+        let finishSmokingDateStr = df.string(from: finishSmokingDate)
+        AuthManager.shared.addFinishSmokingDateToUserStorage(user: currentUser, finishDate: finishSmokingDateStr)
     }
     
 }

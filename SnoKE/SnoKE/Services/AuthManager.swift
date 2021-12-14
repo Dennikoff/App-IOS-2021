@@ -7,12 +7,27 @@
 
 import Foundation
 import FirebaseAuth
+import FirebaseFirestore
+
+enum FirestoreCollection: String {
+    case users
+}
+
+enum UserInfo: String {
+    case id
+    case email
+    case sigarettesPerDay
+    case sigarettesInPacket
+    case packPrice
+    case finishSmokingDate
+}
 
 final class AuthManager {
     
     static let shared = AuthManager()
     
-    var userID: String?
+    private let database = Firestore.firestore()
+    
     
     private init() {
         
@@ -48,18 +63,44 @@ final class AuthManager {
                 }
             } else {
                 print("✅🐣✅ User signs up successfully")
-                guard let id = Auth.auth().currentUser else {
+
+                guard let result = authResult else {
+                    return
+                    // TODO: make error completion
+                }
+                guard let id = Auth.auth().currentUser?.uid else {
                     return
                 }
-                self.userID = id.uid
+                self.database
+                    .collection(FirestoreCollection.users.rawValue)
+                    .document(result.user.uid)
+                    .setData([UserInfo.email.rawValue : email,
+                              UserInfo.id.rawValue : id])
                 completion()
+
             }
         }
     }
     
+    func fillAdditionalUserInfo(to user: User, sigarettesPerDay: Int, sigarettesInPacket: Int, packPrice: Int) {
+        self.database
+            .collection(FirestoreCollection.users.rawValue)
+            .document(user.uid)
+            .updateData([UserInfo.sigarettesPerDay.rawValue : sigarettesPerDay,
+                      UserInfo.sigarettesInPacket.rawValue : sigarettesInPacket,
+                      UserInfo.packPrice.rawValue : packPrice])
+    }
+    
+    func addFinishSmokingDateToUserStorage(user: User, finishDate: String) {
+        self.database
+            .collection(FirestoreCollection.users.rawValue)
+            .document(user.uid)
+            .updateData([UserInfo.finishSmokingDate.rawValue : finishDate])
+    }
+    
     func signIn(_ vc: AuthViewControllerProtocol, email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
-            if let error = error as? NSError {
+            if let error = error as NSError? {
                 switch AuthErrorCode(rawValue: error.code) {
                 case .operationNotAllowed:
                     // Error: Indicates that email and password accounts are not enabled. Enable them in the Auth section of the Firebase console.

@@ -63,7 +63,9 @@ class ProfileViewController: UIViewController {
         
         sections.append(Section(title: "Аккаунт", options: [Option(title: "Выйти", handler: {
             DispatchQueue.main.async {
+                
                 AuthManager.shared.logout() {
+                    print(Auth.auth().currentUser ?? "No CU")
                     (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.setRootViewController(to: .signUpState)
                 }
             }
