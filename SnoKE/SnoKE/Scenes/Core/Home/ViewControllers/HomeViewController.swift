@@ -16,18 +16,23 @@ class HomeViewController: UIViewController {
     
     private let mainView = HomeView()
     
-    let model = SecondaryTrackerModel(type: .savedMoney, number: 322)
+    private var model: TimeWithoutSmokingModel
+    let model1 = SecondaryTrackerModel(type: .savedMoney, number: 322)
     let model2 = SecondaryTrackerModel(type: .brokenCigarettes, number: 322)
     
+    private var timer: Timer = Timer()
     
     // MARK: - Init
     init(presenter: HomePresenterProtocol) {
         self.homePresenter = presenter
+        self.model = HomeService.shared.getCurrentTimeWithoutSmoking()
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
+        self.model = HomeService.shared.getCurrentTimeWithoutSmoking()
         super.init(coder: coder)
+        
     }
     
     
@@ -37,17 +42,30 @@ class HomeViewController: UIViewController {
         view = mainView
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true, block: { [weak self] _ in
+            self?.updateUI()
+        })
+    }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        timer.invalidate()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        mainView.savedMoneyView.configure(with: model)
+        mainView.savedMoneyView.configure(with: model1)
         mainView.brokenCigarettesView.configure(with: model2)
-        let timeWithoutSmokingModel = HomeService.shared.getCurrentTimeWithoutSmoking()
-        let modelDays = timeWithoutSmokingModel.days
-        let hoursModel = timeWithoutSmokingModel.hours
-        let minModel = timeWithoutSmokingModel.minutes
+        let modelDays = model.days
+        let hoursModel = model.hours
+        let minModel = model.minutes
         mainView.timeWithoutSmokingView.configure(digits: (days: (modelDays.firstDigit, modelDays.secondDigit),
                                                            hours: (hoursModel.firstDigit, hoursModel.secondDigit),
                                                            minutes: (minModel.firstDigit, minModel.secondDigit)))
@@ -70,5 +88,12 @@ class HomeViewController: UIViewController {
     
     @objc func userSmokedButtonTapped() {
         homePresenter?.userSmokedButtonTapped()
+    }
+    
+    private func updateUI() {
+        self.model = HomeService.shared.getCurrentTimeWithoutSmoking()
+        mainView.timeWithoutSmokingView.configure(digits: (days: (model.days.firstDigit, model.days.secondDigit),
+                                                           hours: (model.hours.firstDigit, model.hours.secondDigit),
+                                                           minutes: (model.minutes.firstDigit, model.minutes.secondDigit)))
     }
 }
