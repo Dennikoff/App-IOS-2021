@@ -8,46 +8,6 @@
 import UIKit
 import EasyPeasy
 
-enum AchievementType {
-    case budget
-    case ecology
-    case health
-    case scope
-    
-    var category: String {
-        switch self {
-        case.budget:
-            return "Бюджет"
-        case.ecology:
-            return "Экология"
-        case .health:
-            return "Здоровье"
-        case .scope:
-            return "Масштабы"
-        }
-    }
-    
-    var imageSystemName: String {
-        switch self {
-        case .budget:
-            return "rublesign.square.fill"
-        case .ecology:
-            return "drop.fill"
-        case .health:
-            return "lessthan.square.fill"
-        case .scope:
-            return "globe"
-        }
-    }
-}
-
-struct AchievementModel {
-    let date: String
-    let chapter: String
-    let description: String
-    let achievementText: String
-    let type: AchievementType
-}
 
 class AchievementTableViewCell: UITableViewCell {
     
@@ -125,7 +85,7 @@ class AchievementTableViewCell: UITableViewCell {
         category.text = model.type.category
         chapter.text = model.chapter
         achievementDescription.text = model.description
-        achievementText.text = model.achievementText
+        achievementText.text = model.text
         achievementImageView.image = UIImage(systemName: model.type.imageSystemName)
     }
     

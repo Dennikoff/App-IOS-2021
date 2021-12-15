@@ -6,21 +6,16 @@
 //
 
 import UIKit
-
+import FirebaseFirestore
 
 class AchievementsViewController: UIViewController {
-    private var achievements: [AchievementModel] = [
-        AchievementModel(date: "15.01.2021", chapter: "Глава 5: Продвинутый", description: "Вероятность рака легких понизилась на:", achievementText: "13%", type: .health),
-        AchievementModel(date: "01.01.2021", chapter: "Глава 5: Продвинутый", description: "Если выстроить сигареты в ряд получится:", achievementText: "Длина границы Казахстана", type: .scope),
-        
-        AchievementModel(date: "18.01.2021", chapter: "Глава 5: Продвинутый", description: "Воды сэкономлено:", achievementText: "10 000 л", type: .ecology),
-        AchievementModel(date: "21.01.2021", chapter: "Глава 5: Продвинутый", description: "Вы сэкономили:", achievementText: "25 000 RUB", type: .scope),
-        
-        AchievementModel(date: "01.01.2021", chapter: "Глава 5: Продвинутый", description: "Если выстроить сигареты в ряд получится:", achievementText: "Длина границы Казахстана", type: .scope),
-        AchievementModel(date: "15.01.2021", chapter: "Глава 5: Продвинутый", description: "Вероятность рака легких понизилась на:", achievementText: "13%", type: .health),
-        AchievementModel(date: "18.01.2021", chapter: "Глава 5: Продвинутый", description: "Воды сэкономлено:", achievementText: "10 000 л", type: .ecology),
-        AchievementModel(date: "21.01.2021", chapter: "Глава 5: Продвинутый", description: "Вы сэкономили:", achievementText: "25 000 RUB", type: .scope)
-    ]
+    private var achievements: [AchievementModel] {
+        return modelOutput.reversed()
+    }
+    
+    private var modelOutput: [AchievementModel] = []
+    
+    let database = Firestore.firestore()
     
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -36,7 +31,7 @@ class AchievementsViewController: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
-//        fetchData()
+        getAppropriateAchievements()
     }
     
     override func viewDidLayoutSubviews() {
@@ -70,5 +65,36 @@ extension AchievementsViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
+    }
+}
+
+
+extension AchievementsViewController {
+    func getAppropriateAchievements() {
+        
+        
+        guard let daysWithoutCigarettes = HomeService.shared.getDaysWithoutCigarettes() else {
+            return
+        }
+        guard let numberPerDay = UserDefaults.standard.string(forKey: "com.SnoKEapp.SnoKE.numberPerDay.\(AuthManager.shared.currentUserID)") else {
+            return
+        }
+        
+        let notSmokedCigarettes = Int(numberPerDay)! * daysWithoutCigarettes
+        
+      self.database.collection(FirestoreCollection.achievements.rawValue).whereField("numberCigarettes", isLessThan: notSmokedCigarettes)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        let docData = document.data()
+                        let newElem = AchievementModel(data: docData)
+                        self.modelOutput.append(newElem)
+                    }
+                    self.tableView.reloadData()
+                }
+            }
+        
     }
 }

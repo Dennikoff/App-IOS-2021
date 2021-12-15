@@ -80,7 +80,7 @@ class ProfileViewController: UIViewController {
                   print("[DEBUG] Got unwrap error with finishSmokingDate")
             return
         }
-        let finishSmokingString = finishSmokingDate.getFormattedDate(format: "dd/MM/yyyy")
+        let finishSmokingString = finishSmokingDate.getFormattedDate(format: "dd-MM-yyyy")
         
         guard let numPerDay = UserDefaults.standard.string(forKey: "com.SnoKEapp.SnoKE.numberPerDay.\(user.uid)"),
               let packPrice =  UserDefaults.standard.string(forKey: "com.SnoKEapp.SnoKE.packPrice.\(user.uid)"),

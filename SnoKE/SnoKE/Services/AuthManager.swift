@@ -11,6 +11,7 @@ import FirebaseFirestore
 
 enum FirestoreCollection: String {
     case users
+    case achievements
 }
 
 enum UserInfo: String {
@@ -195,11 +196,8 @@ final class AuthManager {
         currentUserID = id
         let docRef = database.collection(FirestoreCollection.users.rawValue).document(currentUserID)
         
-        let coolQueue = DispatchQueue(label: "coolQueue", qos: .userInteractive)
-
-        
         docRef.getDocument { (document, error) in
-            print("[DEBUG] getDOC, \(Thread.isMainThread)")
+            
             if let document = document, document.exists {
                 let dataDescription = document.data()
                 guard let dataDescription = dataDescription else {
