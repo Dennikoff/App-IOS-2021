@@ -44,7 +44,7 @@ extension StartFormViewController: StartFormViewDelegate {
         let currentUserID = currentUser.uid
         
         // TODO: сделать не форс анрап
-        AuthManager.shared.fillAdditionalUserInfo(to: currentUser, cigarettesPerDay: Int(numberPerDay)!, cigarettesInPack: Int(numberInPack)!, packPrice: Int(packPrice)!)
+        AuthManager.shared.fillAdditionalUserInfo(to: currentUser, cigarettesPerDay: numberPerDay, cigarettesInPack: numberInPack, packPrice: packPrice)
         
         UserDefaults.standard.set(numberPerDay, forKey: "com.SnoKEapp.SnoKE.numberPerDay.\(currentUserID)")
         UserDefaults.standard.set(packPrice, forKey: "com.SnoKEapp.SnoKE.packPrice.\(currentUserID)")

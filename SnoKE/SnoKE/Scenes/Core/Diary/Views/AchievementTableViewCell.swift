@@ -73,6 +73,16 @@ class AchievementTableViewCell: UITableViewCell {
         setupLayout()
     }
     
+    override func prepareForReuse() {
+        containerView.backgroundColor = UIColor(red: 246/255, green: 246/255, blue: 245/255, alpha: 1)
+        [dateLabel, category, chapter, achievementDescription, achievementText].forEach {
+            $0.text = nil
+            $0.textColor = .black
+        }
+        achievementImageView.image = nil
+        achievementImageView.tintColor = .black
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

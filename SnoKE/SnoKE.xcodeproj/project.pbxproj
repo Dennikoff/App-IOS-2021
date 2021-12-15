@@ -165,20 +165,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		6060112A2746DFB40093E40A /* MoodControl */ = {
-			isa = PBXGroup;
-			children = (
-				606011252746DEF80093E40A /* EmotionDiaryView.swift */,
-				602E3236274D4A54004C80E8 /* EmojiView.swift */,
-				667776312767CC9C00365EF4 /* AchievementsViewController.swift */,
-				666352AF27219D8C0084BBA3 /* EmotionsDiaryViewController.swift */,
-				664FC33D2767D7F200D7BEAA /* AchievementTableViewCell.swift */,
-				664FC33F2767D85900D7BEAA /* DiaryToggleView.swift */,
-				664FC3412767D87B00D7BEAA /* DiaryViewController.swift */,
-			);
-			path = MoodControl;
-			sourceTree = "<group>";
-		};
 		6663528327219C720084BBA3 = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +234,27 @@
 				6699DF86276963F600D9ADC8 /* AchievementsService.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		6699DF882769E85F00D9ADC8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				667776312767CC9C00365EF4 /* AchievementsViewController.swift */,
+				666352AF27219D8C0084BBA3 /* EmotionsDiaryViewController.swift */,
+				664FC3412767D87B00D7BEAA /* DiaryViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6699DF892769E87800D9ADC8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				606011252746DEF80093E40A /* EmotionDiaryView.swift */,
+				602E3236274D4A54004C80E8 /* EmojiView.swift */,
+				664FC33F2767D85900D7BEAA /* DiaryToggleView.swift */,
+				664FC33D2767D7F200D7BEAA /* AchievementTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		66B1DDB327445A1200BD0A15 /* StartForm */ = {
@@ -409,8 +416,9 @@
 		66C0E5E3272B2E120009E454 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				6699DF892769E87800D9ADC8 /* Views */,
+				6699DF882769E85F00D9ADC8 /* ViewControllers */,
 				6699DF85276963C700D9ADC8 /* Model */,
-				6060112A2746DFB40093E40A /* MoodControl */,
 			);
 			path = Diary;
 			sourceTree = "<group>";

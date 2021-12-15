@@ -22,6 +22,7 @@ class AchievementsViewController: UIViewController {
         tableView.register(AchievementTableViewCell.self,
                            forCellReuseIdentifier: AchievementTableViewCell.identifier)
         tableView.separatorColor = .clear
+        tableView.allowsSelection = false
         return tableView
     }()
 
@@ -39,7 +40,6 @@ class AchievementsViewController: UIViewController {
         tableView.frame = view.bounds
     }
     
-    
 
 }
 
@@ -55,17 +55,21 @@ extension AchievementsViewController: UITableViewDelegate, UITableViewDataSource
             return UITableViewCell()
         }
         let achievement = achievements[indexPath.row]
-        if indexPath.row == 0 {
-            cell.configure(isLast: true, model: achievement)
-        } else {
-            cell.configure(model: achievement)
+        DispatchQueue.main.async {
+            if indexPath.row == 0 {
+                cell.configure(isLast: true, model: achievement)
+            } else {
+                cell.configure(model: achievement)
+            }
         }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
     }
+
 }
 
 
@@ -92,7 +96,10 @@ extension AchievementsViewController {
                         let newElem = AchievementModel(data: docData)
                         self.modelOutput.append(newElem)
                     }
+                    
                     self.tableView.reloadData()
+                    
+                    
                 }
             }
         

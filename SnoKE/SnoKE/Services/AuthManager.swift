@@ -121,7 +121,7 @@ final class AuthManager {
         }
     }
     
-    func fillAdditionalUserInfo(to user: User, cigarettesPerDay: Int, cigarettesInPack: Int, packPrice: Int) {
+    func fillAdditionalUserInfo(to user: User, cigarettesPerDay: String, cigarettesInPack: String, packPrice: String) {
         self.database
             .collection(FirestoreCollection.users.rawValue)
             .document(user.uid)
