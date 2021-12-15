@@ -9,6 +9,7 @@ import UIKit
 
 import UIKit
 import FirebaseAuth
+import SwiftUI
 
 
 struct Section {
@@ -89,12 +90,14 @@ class ProfileViewController: UIViewController {
             print("[DEBUG] Got unwrap error with numPerDay, packPrice, numberInPack")
             return
         }
-        
-        let alert = UIAlertController(title: "Информация об аккаунте",
-                                      message: "Cигарет в день: \(numPerDay)\nСтоимость пачки: \(packPrice)\nКол-во в пачке: \(numberInPack)\n\nЗакончил курить: \(finishSmokingString)",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alert, animated: true)
+        let ballonEmitterView = BalloonEmitterView(numberPerDay: numPerDay, packPrice: packPrice, numberInPack: numberInPack, finishSmokingDate: finishSmokingString)
+        let infoBallonEmitterViewController = UIHostingController(rootView: ballonEmitterView)
+        self.navigationController?.pushViewController(infoBallonEmitterViewController, animated: false)
+//        let alert = UIAlertController(title: "Информация об аккаунте",
+//                                      message: "Cигарет в день: \(numPerDay)\nСтоимость пачки: \(packPrice)\nКол-во в пачке: \(numberInPack)\n\nЗакончил курить: \(finishSmokingString)",
+//                                      preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: .default))
+//        present(alert, animated: true)
     }
     
 }

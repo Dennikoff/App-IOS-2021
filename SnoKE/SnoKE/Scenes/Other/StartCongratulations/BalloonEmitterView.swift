@@ -10,6 +10,11 @@ import SpriteKit
 
 struct BalloonEmitterView: View {
     
+    let numberPerDay: String
+    let packPrice: String
+    let numberInPack: String
+    let finishSmokingDate: String
+    
     func scene(for size: CGSize) -> SKScene {
         let scene = GameScene()
         scene.size = size
@@ -34,26 +39,45 @@ struct BalloonEmitterView: View {
                     SpriteView(scene: scene(for: gp.size), options: .allowsTransparency)
                 }
                 VStack {
-                    Text("Еще один конченый онбординг. Зачем?")
-                        .font(.system(size: 30, weight: .heavy, design: .default))
-                        .multilineTextAlignment(.leading)
-                        .padding(.top, 150)
-                        .padding(.trailing, 40)
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("Сигарет в день: ")
+                                .font(.system(size: 27, weight: .medium, design: .default))
+                                .foregroundColor(Color(UIColor.secondaryLabel))
+                            Text(numberPerDay)
+                                .font(.system(size: 27, weight: .bold, design: .default))
+                        }
+                        HStack {
+                            Text("Стоимость пачки: ")
+                                .font(.system(size: 27, weight: .medium, design: .default))
+                                .foregroundColor(Color(UIColor.secondaryLabel))
+                            Text(packPrice)
+                                .font(.system(size: 27, weight: .bold, design: .default))
+                        }
+                        HStack {
+                            Text("Количество в пачке: ")
+                                .font(.system(size: 27, weight: .medium, design: .default))
+                                .foregroundColor(Color(UIColor.secondaryLabel))
+                            Text(numberInPack)
+                                .font(.system(size: 27, weight: .bold, design: .default))
+                        }
+                        VStack(alignment: .leading) {
+                            Text("Закончил курить: ")
+                                .font(.system(size: 27, weight: .medium, design: .default))
+                                .foregroundColor(Color(UIColor.secondaryLabel))
+                            Text(finishSmokingDate)
+                                .font(.system(size: 27, weight: .bold, design: .default))
+                        }
+                        
+                    }
+                    
+                    .multilineTextAlignment(.leading)
+                    .padding(.top, 80)
+                    .padding(.trailing, 40)
+                    
+                    
                     Spacer()
                     
-                    Button(action: { print("lol")}, label: {
-                        ZStack {
-                            Color.purple
-                            Text("Потому что умеем")
-                        }
-                    })
-                        .frame(height: 50)
-                        .background(Color.purple)
-                        .cornerRadius(10)
-                        .foregroundColor(.white)
-                        .font(.body)
-                        .padding()
-                        .padding(.bottom, 30)
                 }
             }
         }
@@ -63,7 +87,7 @@ struct BalloonEmitterView: View {
 
 struct BalloonEmitterView_Previews: PreviewProvider {
     static var previews: some View {
-        BalloonEmitterView()
+        BalloonEmitterView(numberPerDay: "5", packPrice: "250", numberInPack: "20", finishSmokingDate: "01-11-2021")
         
     }
 }
